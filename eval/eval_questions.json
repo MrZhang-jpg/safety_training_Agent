@@ -1,0 +1,23 @@
+{
+  "retrieval": [
+    {"query": "架子工脚手架搭设有哪些安全要求", "expected_source": "四知卡|架子", "expected_terms": ["脚手架", "防护"]},
+    {"query": "电工施工现场临时用电安全操作规程", "expected_source": "电工|四知卡", "expected_terms": ["电", "漏电"]},
+    {"query": "高处作业高空作业安全防护措施", "expected_source": "高空|高处", "expected_terms": ["安全带", "防护"]},
+    {"query": "起重吊装作业安全要求和指挥规定", "expected_source": "起重|吊装", "expected_terms": ["吊装", "指挥"]},
+    {"query": "基坑开挖施工安全支护要求", "expected_source": "基坑", "expected_terms": ["基坑", "支护"]},
+    {"query": "人工挖孔桩施工安全措施", "expected_source": "人工挖孔桩|挖孔桩", "expected_terms": ["孔", "防护"]},
+    {"query": "隧道施工作业安全要求", "expected_source": "隧道", "expected_terms": ["隧道"]},
+    {"query": "爆破作业安全警戒要求", "expected_source": "爆破", "expected_terms": ["爆破", "警戒"]},
+    {"query": "钻孔桩桩基施工安全", "expected_source": "桩", "expected_terms": ["桩"]},
+    {"query": "生产安全事故应急救援预案流程", "expected_source": "应急预案", "expected_terms": ["应急"]},
+    {"query": "钢筋加工与绑扎安全要求", "expected_source": "钢筋", "expected_terms": ["钢筋"]},
+    {"query": "塔吊安装拆除安全装置要求", "expected_source": "塔吊", "expected_terms": ["塔吊"]}
+  ],
+  "exam": [
+    {"craft_type": "电工", "edu_level": "班组级", "must_contain": ["电工", "班组级"]},
+    {"craft_type": "电焊工", "edu_level": "项目级", "must_contain": ["电焊工", "项目级"]},
+    {"craft_type": "架子工", "edu_level": "班组级", "must_contain": ["架子工", "班组级"]},
+    {"craft_type": "高处作业工", "edu_level": "项目级", "must_contain": ["高处作业工", "项目级"]},
+    {"craft_type": "起重吊装工", "edu_level": "班组级", "must_contain": ["起重吊装工", "班组级"]}
+  ]
+}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>安全培训智能 Agent</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #4e6ef2;
+    --primary-2: #6e87ff;
+    --bg: #f2f3f5;
+    --card: #ffffff;
+    --text: #1f2329;
+    --sub: #8a8f99;
+    --border: #e4e6eb;
+    --green: #00b96b;
+  }
+  body { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif; background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* ===== 顶部 ===== */
+  header { background: #fff; padding: 0 28px; height: 64px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border); flex: none; }
+  .logo { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; display: grid; place-items: center; font-size: 20px; font-weight: 700; box-shadow: 0 4px 12px rgba(78,110,242,.3); }
+  header h1 { font-size: 18px; font-weight: 600; }
+  header .sub { font-size: 12px; color: var(--sub); margin-top: 2px; }
+  .badges { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font-size: 11px; color: #556; background: #f0f1f5; border: 1px solid var(--border); border-radius: 20px; padding: 4px 10px; }
+  .badge.hl { color: var(--primary); background: rgba(78,110,242,.08); border-color: rgba(78,110,242,.25); }
+
+  /* ===== 标签页 ===== */
+  .tabs { background: #fff; padding: 0 28px; display: flex; gap: 2px; border-bottom: 1px solid var(--border); flex: none; }
+  .tab { padding: 14px 18px; cursor: pointer; font-size: 14px; color: var(--sub); border-bottom: 2px solid transparent; transition: color .15s; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--primary); border-color: var(--primary); font-weight: 600; }
+
+  main { flex: 1; overflow-y: auto; padding: 20px 0 40px; }
+  .panel { display: none; max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .panel.active { display: block; }
+
+  /* ===== 对话区 ===== */
+  #p-chat { max-width: 860px; display: none; flex-direction: column; height: 100%; }
+  #p-chat.active { display: flex; }
+  #chatBox { flex: 1; overflow-y: auto; padding: 8px 4px 16px; display: flex; flex-direction: column; gap: 18px; }
+  .msg { display: flex; gap: 10px; max-width: 100%; }
+  .msg.user { justify-content: flex-end; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 15px; }
+  .msg.bot .avatar { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; }
+  .msg.user .avatar { background: #e8ecf7; color: var(--primary); }
+  .bubble { max-width: 78%; padding: 12px 16px; border-radius: 14px; font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+  .msg.bot .bubble { background: var(--card); border: 1px solid var(--border); border-bottom-left-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.03); }
+  .msg.user .bubble { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; border-bottom-right-radius: 4px; }
+  .msg .bubble pre, .msg .bubble code { font-family: Consolas, monospace; font-size: 13px; background: rgba(0,0,0,.04); border-radius: 6px; padding: 2px 5px; }
+  .msg.bot .bubble pre { display:block; padding: 10px; overflow-x: auto; }
+
+  .quick { display: flex; gap: 8px; flex-wrap: wrap; padding-bottom: 12px; }
+  .quick span { background: #fff; border: 1px solid var(--border); color: var(--text); padding: 6px 14px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: all .15s; }
+  .quick span:hover { border-color: var(--primary); color: var(--primary); background: rgba(78,110,242,.05); }
+
+  .inputbar { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 8px 8px 8px 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.05); }
+  .inputbar input { flex: 1; border: none; outline: none; font-size: 14px; padding: 8px 0; font-family: inherit; }
+  .inputbar button { border: none; outline: none; background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; border-radius: 12px; padding: 10px 22px; font-size: 14px; cursor: pointer; font-weight: 600; transition: opacity .15s; }
+  .inputbar button:hover { opacity: .88; }
+  .inputbar button:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* ===== 表单区 ===== */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.03); }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .card .desc { font-size: 13px; color: var(--sub); margin-bottom: 16px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  label.lbl { font-size: 13px; color: #556; }
+  input[type=text], select, textarea { padding: 9px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; font-family: inherit; outline: none; background: #fff; }
+  input[type=text]:focus, select:focus, textarea:focus { border-color: var(--primary); }
+  textarea { width: 100%; min-height: 90px; resize: vertical; }
+  button.btn { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; border: none; border-radius: 10px; padding: 9px 18px; font-size: 14px; cursor: pointer; font-weight: 600; }
+  button.btn:hover { opacity: .88; }
+  button.btn.ghost { background: #fff; color: var(--primary); border: 1px solid rgba(78,110,242,.35); }
+  button.btn.green { background: linear-gradient(135deg, #00b96b, #00d083); }
+  .hint { font-size: 12px; color: var(--sub); margin-top: 8px; }
+
+  .result { margin-top: 6px; }
+  .qcard { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; background: #fbfcfe; }
+  .qcard .qt { font-size: 12px; color: #fff; background: var(--primary); border-radius: 6px; padding: 2px 8px; margin-right: 8px; display: inline-block; }
+  .qcard .op { display: block; padding: 3px 0 3px 8px; font-size: 14px; color: #333; }
+  .qcard .ans { margin-top: 8px; background: #fffbe8; border-left: 3px solid #ffc53d; padding: 6px 10px; font-size: 13px; border-radius: 0 8px 8px 0; }
+  .stat { display: inline-block; background: #f0f1f5; color: #445; padding: 3px 10px; border-radius: 6px; font-size: 12px; margin: 3px 3px 3px 0; }
+  .toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .dl-bar { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); }
+  .section-title { font-size: 15px; font-weight: 600; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
+  .sect-card { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; background: #fbfcfe; }
+  .sect-card h4 { font-size: 14px; color: var(--primary); margin-bottom: 6px; }
+  .sect-card p { font-size: 13.5px; line-height: 1.75; white-space: pre-wrap; color: #333; }
+  .loading { color: var(--sub); font-size: 13px; padding: 12px 0; }
+  table.mini { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  table.mini th, table.mini td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; }
+  table.mini th { background: #f5f6fa; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">安</div>
+  <div>
+    <h1>安全培训智能 Agent</h1>
+    <div class="sub">三级安全教育 · 智能出题 · 培训资料 · OCR 判卷 · 合规台账 · Word 下载</div>
+  </div>
+  <div class="badges" id="healthBadges">
+    <span class="badge hl">加载中…</span>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" data-t="chat">智能对话</div>
+  <div class="tab" data-t="exam">生成试卷</div>
+  <div class="tab" data-t="material">培训资料</div>
+  <div class="tab" data-t="ocr">OCR 判卷</div>
+  <div class="tab" data-t="ledger">培训台账</div>
+</div>
+
+<main>
+  <!-- ===== 对话 ===== -->
+  <section class="panel active" id="p-chat">
+    <div id="chatBox">
+      <div class="msg bot">
+        <div class="avatar">安</div>
+        <div class="bubble">你好，我是安全培训智能 Agent。可以帮你：
+① 按工种与三级教育层级生成考核试卷；② 生成标准化培训资料；③ OCR 识别试卷并自动判卷；④ 生成培训台账。所有资料与试卷都支持下载为 Word 文件。</div>
+      </div>
+    </div>
+    <div class="quick">
+      <span>为电工生成班组级三级安全教育试卷</span>
+      <span>生成电焊工项目级培训资料</span>
+      <span>查询高处作业的安全防护要求</span>
+      <span>为起重吊装工生成班组级试卷</span>
+    </div>
+    <div class="inputbar">
+      <input type="text" id="chatInput" placeholder="请输入指令，如：为架子工生成项目级安全教育试卷" />
+      <button onclick="sendChat()">发送</button>
+    </div>
+  </section>
+
+  <!-- ===== 出题 ===== -->
+  <section class="panel" id="p-exam">
+    <div class="card">
+      <h3>生成考核试卷</h3>
+      <div class="desc">按工种 + 三级教育层级（公司级/项目级/班组级）自动生成标准化试卷，含参考答案与解析。</div>
+      <div class="toolbar">
+        <label class="lbl">工种</label>
+        <select id="exCraft">
+          <option>电工</option><option>电焊工</option><option>架子工</option><option>钢筋工</option>
+          <option>高处作业工</option><option>起重吊装工</option><option>人工挖孔桩工</option>
+          <option>基坑作业工</option><option>隧道作业工</option><option>爆破工</option>
+          <option>桥涵作业工</option><option>塔吊司机</option>
+        </select>
+        <label class="lbl">教育层级</label>
+        <select id="exEdu"><option>班组级</option><option>项目级</option><option>公司级</option></select>
+        <button class="btn" onclick="genExam()">生成试卷</button>
+      </div>
+      <div class="dl-bar">
+        <button class="btn green" onclick="downloadWord('/api/exam/download', examBody(), '试卷.docx')">⬇ 下载为 Word 试卷</button>
+      </div>
+    </div>
+    <div class="result" id="examResult"></div>
+  </section>
+
+  <!-- ===== 培训资料 ===== -->
+  <section class="panel" id="p-material">
+    <div class="card">
+      <h3>生成标准化培训资料</h3>
+      <div class="desc">按工种 + 层级自动生成培训讲义（作业风险 / 操作规程 / 劳动防护 / 应急处置章节），可下载打印下发。</div>
+      <div class="toolbar">
+        <label class="lbl">工种</label>
+        <select id="mtCraft">
+          <option>电工</option><option>电焊工</option><option>架子工</option><option>钢筋工</option>
+          <option>高处作业工</option><option>起重吊装工</option><option>人工挖孔桩工</option>
+          <option>基坑作业工</option><option>隧道作业工</option><option>爆破工</option>
+          <option>桥涵作业工</option><option>塔吊司机</option>
+        </select>
+        <label class="lbl">教育层级</label>
+        <select id="mtEdu"><option>班组级</option><option>项目级</option><option>公司级</option></select>
+        <button class="btn" onclick="genMaterial()">生成培训资料</button>
+      </div>
+      <div class="dl-bar">
+        <button class="btn green" onclick="downloadWord('/api/material/download', materialBody(), '培训资料.docx')">⬇ 下载为 Word 资料</button>
+      </div>
+    </div>
+    <div class="result" id="materialResult"></div>
+  </section>
+
+  <!-- ===== OCR 判卷 ===== -->
+  <section class="panel" id="p-ocr">
+    <div class="card">
+      <h3>OCR 识别与判卷</h3>
+      <div class="desc">上传试卷图片自动识别，客观题确定性比对，主观题辅助评分。</div>
+      <div class="toolbar">
+        <input type="file" id="ocrFile" accept="image/*" />
+        <button class="btn ghost" onclick="doOcr()">识别试卷</button>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <textarea id="ocrText" placeholder="OCR 识别结果，或直接粘贴考生作答（如 1.A 2.对 3.BCD）"></textarea>
+      </div>
+      <div class="toolbar" style="margin-top:10px">
+        <input type="text" id="ocrCraft" placeholder="工种，如 电工" style="flex:1" />
+        <button class="btn" onclick="gradeByText()">智能判分</button>
+      </div>
+    </div>
+    <div class="result" id="ocrResult"></div>
+  </section>
+
+  <!-- ===== 台账 ===== -->
+  <section class="panel" id="p-ledger">
+    <div class="card">
+      <h3>生成培训台账</h3>
+      <div class="desc">汇总参训人员与考试成绩，输出合规培训台账初稿。</div>
+      <div class="toolbar">
+        <label class="lbl">工种</label><input type="text" id="ldCraft" value="电工" style="width:120px" />
+        <label class="lbl">层级</label>
+        <select id="ldEdu"><option>班组级</option><option>项目级</option><option>公司级</option></select>
+        <label class="lbl">主讲</label><input type="text" id="ldTrainer" placeholder="安全员姓名" style="width:140px" />
+        <label class="lbl">地点</label><input type="text" id="ldLocation" placeholder="项目部会议室" style="width:160px" />
+        <label class="lbl">日期</label><input type="text" id="ldDate" placeholder="2026-10-05" style="width:120px" />
+      </div>
+      <div class="row" style="margin-top:12px">
+        <textarea id="ldNames" placeholder="参训人员名单，用逗号或换行分隔，如：张三、李四、王五"></textarea>
+      </div>
+      <div class="toolbar" style="margin-top:10px">
+        <button class="btn" onclick="genLedger()">生成台账</button>
+        <button class="btn green" onclick="downloadWord('/api/ledger/download', ledgerBody(), '台账.docx')">⬇ 下载为 Word 台账</button>
+      </div>
+    </div>
+    <div class="result" id="ledgerResult"></div>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ===== 标签页 ===== */
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(x => x.classList.remove("active"));
+  t.classList.add("active");
+  $("p-" + t.dataset.t).classList.add("active");
+});
+
+/* ===== 健康信息 ===== */
+fetch("/health").then(r => r.json()).then(d => {
+  const el = $("healthBadges");
+  if (!d || d.status !== "ok") { el.innerHTML = `<span class="badge">服务异常</span>`; return; }
+  el.innerHTML = `
+    <span class="badge hl">Ollama · ${esc(d.llm_model)}</span>
+    <span class="badge hl">${esc(d.vector_db)} · ${esc(d.index_type)}</span>
+    <span class="badge">BGE 中文嵌入</span>
+    <span class="badge">LangGraph Agent</span>`;
+}).catch(() => {});
+
+/* ===== 对话 ===== */
+function addMsg(role, text, asHtml) {
+  const box = $("chatBox");
+  const d = document.createElement("div");
+  d.className = "msg " + role;
+  const avatar = role === "user" ? "我" : "安";
+  d.innerHTML = `<div class="avatar">${avatar}</div><div class="bubble"></div>`;
+  const b = d.querySelector(".bubble");
+  if (asHtml) b.innerHTML = text; else b.textContent = text;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+async function sendChat(text) {
+  const q = text || $("chatInput").value.trim();
+  if (!q) return;
+  addMsg("user", q); $("chatInput").value = "";
+  const tmp = document.createElement("div");
+  tmp.className = "msg bot";
+  tmp.innerHTML = `<div class="avatar">安</div><div class="bubble">正在思考…</div>`;
+  $("chatBox").appendChild(tmp);
+  $("chatBox").scrollTop = $("chatBox").scrollHeight;
+  try {
+    const r = await fetch("/api/chat", {method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({query:q, thread_id:"web-1"})});
+    const d = await r.json();
+    tmp.querySelector(".bubble").textContent = d.success ? d.data.answer : ("出错：" + d.message);
+  } catch (e) {
+    tmp.querySelector(".bubble").textContent = "请求失败：" + e.message;
+  }
+  $("chatBox").scrollTop = $("chatBox").scrollHeight;
+}
+document.querySelectorAll("#p-chat .quick span").forEach(s => s.onclick = () => sendChat(s.textContent));
+$("chatInput").addEventListener("keydown", e => { if (e.key === "Enter") sendChat(); });
+
+/* ===== Word 下载 ===== */
+async function downloadWord(url, body, name) {
+  const r = await fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)});
+  if (!r.ok) { alert("下载失败：HTTP " + r.status); return; }
+  const blob = await r.blob();
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(a.href);
+  a.remove();
+}
+const examBody = () => ({craft_type: $("exCraft").value, edu_level: $("exEdu").value});
+const materialBody = () => ({craft_type: $("mtCraft").value, edu_level: $("mtEdu").value});
+
+/* ===== 出题 ===== */
+function renderExam(exam) {
+  let html = `<div class="section-title">${esc(exam.title)}<span class="stat">总分 ${exam.total_score}</span></div>`;
+  exam.questions.forEach(q => {
+    html += `<div class="qcard"><span class="qt">${esc(q.q_type)}</span><b>${q.index}. ${esc(q.content)}</b><span style="float:right;font-size:12px;color:#8a8f99">${q.score}分</span>`;
+    if (q.options && q.options.length) html += q.options.map(o => `<span class="op">${esc(o)}</span>`).join("");
+    html += `<div class="ans">参考答案：${esc(q.answer)}${q.analysis ? "　解析：" + esc(q.analysis) : ""}</div></div>`;
+  });
+  if (exam.references && exam.references.length)
+    html += `<div class="hint">参考来源：${exam.references.map(esc).join("；")}</div>`;
+  return html;
+}
+async function genExam() {
+  $("examResult").innerHTML = `<div class="loading">正在生成试卷（本地模型推理，约 10-60 秒）…</div>`;
+  const r = await fetch("/api/exam/generate", {method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(examBody())});
+  const d = await r.json();
+  $("examResult").innerHTML = d.success ? renderExam(d.data) : (`<div class="loading">出错：${esc(d.message)}</div>`);
+}
+
+/* ===== 培训资料 ===== */
+function renderMaterial(m) {
+  let html = `<div class="section-title">${esc(m.title)}</div>`;
+  if (m.summary) html += `<div class="hint" style="margin-bottom:12px">${esc(m.summary)}</div>`;
+  m.sections.forEach((s, i) => {
+    html += `<div class="sect-card"><h4>${i+1}. ${esc(s.heading)}</h4><p>${esc(s.content)}</p></div>`;
+  });
+  if (m.references && m.references.length)
+    html += `<div class="hint">参考来源：${m.references.map(esc).join("；")}</div>`;
+  return html;
+}
+async function genMaterial() {
+  $("materialResult").innerHTML = `<div class="loading">正在生成培训资料（本地模型推理，约 10-60 秒）…</div>`;
+  const r = await fetch("/api/material/generate", {method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(materialBody())});
+  const d = await r.json();
+  $("materialResult").innerHTML = d.success ? renderMaterial(d.data) : (`<div class="loading">出错：${esc(d.message)}</div>`);
+}
+
+/* ===== OCR ===== */
+async function doOcr() {
+  const f = $("ocrFile").files[0];
+  if (!f) { alert("请先选择试卷图片"); return; }
+  $("ocrText").value = "识别中…";
+  const fd = new FormData(); fd.append("file", f);
+  const r = await fetch("/api/ocr", {method:"POST", body:fd});
+  const d = await r.json();
+  $("ocrText").value = d.success ? d.data.text : ("识别失败：" + d.message);
+}
+async function gradeByText() {
+  const t = $("ocrText").value.trim();
+  if (!t) { alert("请先识别或粘贴作答内容"); return; }
+  const craft = $("ocrCraft").value.trim();
+  const q = `请判分，工种${craft || "通用"}，班组级。考生作答：${t}`;
+  $("ocrResult").innerHTML = `<div class="loading">判分中…</div>`;
+  const r = await fetch("/api/chat", {method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({query:q, thread_id:"ocr-1"})});
+  const d = await r.json();
+  $("ocrResult").innerHTML = `<div class="card" style="margin-top:0"><pre style="white-space:pre-wrap;font-size:13.5px;line-height:1.8">${esc(d.success ? d.data.answer : d.message)}</pre></div>`;
+}
+
+/* ===== 台账 ===== */
+function ledgerBody() {
+  const names = $("ldNames").value.split(/[,，\n]/).map(s => s.trim()).filter(Boolean);
+  return {craft_type:$("ldCraft").value.trim(), edu_level:$("ldEdu").value,
+    trainer:$("ldTrainer").value.trim(), location:$("ldLocation").value.trim(),
+    training_date:$("ldDate").value.trim(), trainee_names:names};
+}
+async function genLedger() {
+  $("ledgerResult").innerHTML = `<div class="loading">生成中…</div>`;
+  const r = await fetch("/api/ledger", {method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(ledgerBody())});
+  const d = await r.json();
+  if (!d.success) { $("ledgerResult").innerHTML = `<div class="loading">出错：${esc(d.message)}</div>`; return; }
+  const L = d.data;
+  $("ledgerResult").innerHTML = `
+    <div class="card" style="margin-top:0">
+      <div class="section-title">安全培训台账（初稿）</div>
+      <span class="stat">工种：${esc(L.craft_type)}</span><span class="stat">层级：${esc(L.edu_level)}</span>
+      <span class="stat">参训：${L.trainee_count} 人</span><span class="stat">主讲：${esc(L.trainer) || "—"}</span>
+      <span class="stat">地点：${esc(L.location) || "—"}</span><span class="stat">日期：${esc(L.training_date) || "—"}</span>
+      <p style="margin-top:12px;line-height:1.8">${esc(L.grade_summary)}</p>
+      <p style="margin-top:8px"><b>参训人员：</b>${L.trainee_names.map(esc).join("、") || "—"}</p>
+      <p class="hint" style="margin-top:14px">${esc(L.remark)}</p>
+    </div>`;
+}
+</script>
+</body>
+</html>

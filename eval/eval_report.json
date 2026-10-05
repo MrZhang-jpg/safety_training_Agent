@@ -1,0 +1,265 @@
+{
+  "backend": "openrouter",
+  "timestamp": "2026-10-03T09:22:22",
+  "retrieval": {
+    "samples": 12,
+    "hit_rate": 1.0,
+    "mrr": 1.0,
+    "term_coverage": 1.0,
+    "details": [
+      {
+        "query": "架子工脚手架搭设有哪些安全要求",
+        "expected_source": "四知卡|架子",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "query": "电工施工现场临时用电安全操作规程",
+        "expected_source": "电工|四知卡",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/电工安全教育培训试卷.doc",
+          "安全教育培训试题和课件/安全培训试题/电工安全教育培训试卷.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/电工安全知识培训教材.doc"
+        ]
+      },
+      {
+        "query": "高处作业高空作业安全防护措施",
+        "expected_source": "高空|高处",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc",
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc"
+        ]
+      },
+      {
+        "query": "起重吊装作业安全要求和指挥规定",
+        "expected_source": "起重|吊装",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全交底/起重吊装安全交底.docx",
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc"
+        ]
+      },
+      {
+        "query": "基坑开挖施工安全支护要求",
+        "expected_source": "基坑",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全交底/基坑施工安全技术交底 2022.3.14.docx",
+          "安全交底/基坑施工安全技术交底 2022.3.14.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "query": "人工挖孔桩施工安全措施",
+        "expected_source": "人工挖孔桩|挖孔桩",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx"
+        ]
+      },
+      {
+        "query": "隧道施工作业安全要求",
+        "expected_source": "隧道",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/隧道初支试卷.docx",
+          "安全教育培训试题和课件/安全培训试题/隧道仰拱二衬试卷.docx",
+          "安全教育培训试题和课件/安全培训试题/隧道开挖试卷.docx"
+        ]
+      },
+      {
+        "query": "爆破作业安全警戒要求",
+        "expected_source": "爆破",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "query": "钻孔桩桩基施工安全",
+        "expected_source": "桩",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全交底/钻孔桩安全技术交底.docx",
+          "安全交底/钻孔桩安全技术交底.docx",
+          "安全交底/桩工安全技术交底.docx"
+        ]
+      },
+      {
+        "query": "生产安全事故应急救援预案流程",
+        "expected_source": "应急预案",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "应急预案/公司安全〔2022〕235号关于印发《中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案》(F版)的通知.pdf",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf"
+        ]
+      },
+      {
+        "query": "钢筋加工与绑扎安全要求",
+        "expected_source": "钢筋",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全交底/钢筋绑扎安全技术交底.doc",
+          "安全交底/钢筋绑扎安全技术交底.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/钢筋加工工班人员培训讲义.doc"
+        ]
+      },
+      {
+        "query": "塔吊安装拆除安全装置要求",
+        "expected_source": "塔吊",
+        "hit": true,
+        "rank": 1,
+        "term_coverage": 1.0,
+        "top_sources": [
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+          "安全交底/塔吊拆除安全技术交底.doc",
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc"
+        ]
+      }
+    ]
+  },
+  "exam": {
+    "samples": 5,
+    "valid_rate": 1.0,
+    "term_coverage": 1.0,
+    "details": [
+      {
+        "craft_type": "电工",
+        "edu_level": "班组级",
+        "structure_valid": true,
+        "question_count": 13,
+        "q_type_dist": {
+          "单选题": 5,
+          "多选题": 3,
+          "判断题": 3,
+          "简答题": 2
+        },
+        "term_coverage": 1.0
+      },
+      {
+        "craft_type": "电焊工",
+        "edu_level": "项目级",
+        "structure_valid": true,
+        "question_count": 13,
+        "q_type_dist": {
+          "单选题": 5,
+          "多选题": 3,
+          "判断题": 3,
+          "简答题": 2
+        },
+        "term_coverage": 1.0
+      },
+      {
+        "craft_type": "架子工",
+        "edu_level": "班组级",
+        "structure_valid": true,
+        "question_count": 13,
+        "q_type_dist": {
+          "单选题": 5,
+          "多选题": 3,
+          "判断题": 3,
+          "简答题": 2
+        },
+        "term_coverage": 1.0
+      },
+      {
+        "craft_type": "高处作业工",
+        "edu_level": "项目级",
+        "structure_valid": true,
+        "question_count": 13,
+        "q_type_dist": {
+          "单选题": 5,
+          "多选题": 3,
+          "判断题": 3,
+          "简答题": 2
+        },
+        "term_coverage": 1.0
+      },
+      {
+        "craft_type": "起重吊装工",
+        "edu_level": "班组级",
+        "structure_valid": true,
+        "question_count": 13,
+        "q_type_dist": {
+          "单选题": 5,
+          "多选题": 3,
+          "判断题": 3,
+          "简答题": 2
+        },
+        "term_coverage": 1.0
+      }
+    ]
+  },
+  "grading": {
+    "samples": 5,
+    "score_accuracy": 1.0,
+    "details": [
+      {
+        "case": "全部答对",
+        "expected_score": 30,
+        "actual_score": 30.0,
+        "correct": true
+      },
+      {
+        "case": "第1题单选答错",
+        "expected_score": 25,
+        "actual_score": 25.0,
+        "correct": true
+      },
+      {
+        "case": "第3题判断答错",
+        "expected_score": 25,
+        "actual_score": 25.0,
+        "correct": true
+      },
+      {
+        "case": "第5题多选漏选判错",
+        "expected_score": 20,
+        "actual_score": 20.0,
+        "correct": true
+      },
+      {
+        "case": "多选答案乱序仍算对",
+        "expected_score": 30,
+        "actual_score": 30.0,
+        "correct": true
+      }
+    ]
+  },
+  "overall_accuracy": 1.0
+}

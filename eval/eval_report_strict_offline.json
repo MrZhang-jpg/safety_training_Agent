@@ -1,0 +1,935 @@
+{
+  "meta": {
+    "evaluator": "StrictAgentEvaluator v1.0",
+    "backend": "offline",
+    "llm_model": "offline",
+    "dataset": "eval/eval_questions_strict.json",
+    "retrieval_samples": 80,
+    "exam_crafts": 8,
+    "grading_cases": 14,
+    "runs_exam": 3,
+    "runs_grading": 1,
+    "fact_check": false,
+    "stages_done": [
+      "grading"
+    ],
+    "timestamp": "2026-10-03T10:52:23",
+    "llm_calls": 0,
+    "llm_calls_total": 0,
+    "llm_calls_ok": 0,
+    "llm_calls_failed": 0,
+    "llm_errors": [],
+    "quota_exhausted": false,
+    "wall_clock_s": 0.0
+  },
+  "retrieval": {
+    "skipped": true
+  },
+  "exam": {
+    "skipped": true
+  },
+  "grading": {
+    "runs": 1,
+    "overall": {
+      "objective_accuracy": 1.0,
+      "essay_mae": 5.0,
+      "essay_rmse": 9.16,
+      "essay_bias": -5.0,
+      "essay_within_10pct": 0.6071,
+      "total_mae": 10.0,
+      "total_bias": -10.0,
+      "total_within_5pts": 0.6429,
+      "pearson_total": 0.7735,
+      "spearman_total": 0.8115,
+      "pearson_essay": 0.8212,
+      "spearman_essay": 0.9015,
+      "essay_llm_share": 0.0
+    },
+    "per_run": [
+      {
+        "objective_accuracy": 1.0,
+        "essay_mae": 5.0,
+        "essay_rmse": 9.16,
+        "essay_bias": -5.0,
+        "essay_within_10pct": 0.6071,
+        "total_mae": 10.0,
+        "total_bias": -10.0,
+        "total_within_5pts": 0.6429,
+        "pearson_total": 0.7735,
+        "spearman_total": 0.8115,
+        "pearson_essay": 0.8212,
+        "spearman_essay": 0.9015,
+        "essay_llm_share": 0.0
+      }
+    ],
+    "stability": {
+      "objective_accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 1
+      },
+      "essay_mae": {
+        "mean": 5.0,
+        "std": 0.0,
+        "min": 5.0,
+        "max": 5.0,
+        "n": 1
+      },
+      "essay_rmse": {
+        "mean": 9.16,
+        "std": 0.0,
+        "min": 9.16,
+        "max": 9.16,
+        "n": 1
+      },
+      "essay_bias": {
+        "mean": -5.0,
+        "std": 0.0,
+        "min": -5.0,
+        "max": -5.0,
+        "n": 1
+      },
+      "essay_within_10pct": {
+        "mean": 0.6071,
+        "std": 0.0,
+        "min": 0.6071,
+        "max": 0.6071,
+        "n": 1
+      },
+      "total_mae": {
+        "mean": 10.0,
+        "std": 0.0,
+        "min": 10.0,
+        "max": 10.0,
+        "n": 1
+      },
+      "total_bias": {
+        "mean": -10.0,
+        "std": 0.0,
+        "min": -10.0,
+        "max": -10.0,
+        "n": 1
+      },
+      "total_within_5pts": {
+        "mean": 0.6429,
+        "std": 0.0,
+        "min": 0.6429,
+        "max": 0.6429,
+        "n": 1
+      },
+      "pearson_total": {
+        "mean": 0.7735,
+        "std": 0.0,
+        "min": 0.7735,
+        "max": 0.7735,
+        "n": 1
+      },
+      "spearman_total": {
+        "mean": 0.8115,
+        "std": 0.0,
+        "min": 0.8115,
+        "max": 0.8115,
+        "n": 1
+      },
+      "pearson_essay": {
+        "mean": 0.8212,
+        "std": 0.0,
+        "min": 0.8212,
+        "max": 0.8212,
+        "n": 1
+      },
+      "spearman_essay": {
+        "mean": 0.9015,
+        "std": 0.0,
+        "min": 0.9015,
+        "max": 0.9015,
+        "n": 1
+      },
+      "essay_llm_share": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 1
+      },
+      "llm_essay_mae": {
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null,
+        "n": 0
+      },
+      "llm_pearson_essay": {
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null,
+        "n": 0
+      },
+      "llm_spearman_essay": {
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null,
+        "n": 0
+      }
+    },
+    "details": [
+      {
+        "cases": 14,
+        "essay_llm_share": 0.0,
+        "essay_llm_samples": 0,
+        "objective_accuracy": 1.0,
+        "objective_correct": 42,
+        "objective_total": 42,
+        "essay_mae": 5.0,
+        "essay_rmse": 9.16,
+        "essay_bias": -5.0,
+        "essay_within_10pct": 0.6071,
+        "total_mae": 10.0,
+        "total_bias": -10.0,
+        "total_within_5pts": 0.6429,
+        "pearson_total": 0.7735,
+        "spearman_total": 0.8115,
+        "pearson_essay": 0.8212,
+        "spearman_essay": 0.9015,
+        "llm_pearson_essay": null,
+        "llm_spearman_essay": null,
+        "llm_essay_mae": null,
+        "per_case": [
+          {
+            "case": "C01 全部答对",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C02 客观题全错、简答题满分",
+            "human_total": 60.0,
+            "actual_total": 60.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：A"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C03 客观题满分、简答题各命中一半",
+            "human_total": 70.0,
+            "actual_total": 65.0,
+            "total_diff": -5.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              5.0
+            ],
+            "essay_got": [
+              15.0,
+              10.0
+            ],
+            "essay_human": [
+              15.0,
+              15.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 15.0,
+                "human": 15.0,
+                "comment": "命中 3/6 个得分点。"
+              },
+              "5": {
+                "got": 10.0,
+                "human": 15.0,
+                "comment": "命中 2/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C04 客观题满分、简答题完全跑题",
+            "human_total": 40.0,
+            "actual_total": 40.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              0.0,
+              0.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "命中 0/6 个得分点。"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "命中 0/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C05 简答比参考答案更详细",
+            "human_total": 100.0,
+            "actual_total": 85.0,
+            "total_diff": -15.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              5.0,
+              10.0
+            ],
+            "essay_got": [
+              25.0,
+              20.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 25.0,
+                "human": 30.0,
+                "comment": "命中 5/6 个得分点。"
+              },
+              "5": {
+                "got": 20.0,
+                "human": 30.0,
+                "comment": "命中 4/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C06 简答只写关键词短语",
+            "human_total": 80.0,
+            "actual_total": 45.0,
+            "total_diff": -35.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              20.0,
+              15.0
+            ],
+            "essay_got": [
+              0.0,
+              5.0
+            ],
+            "essay_human": [
+              20.0,
+              20.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 20.0,
+                "comment": "命中 0/6 个得分点。"
+              },
+              "5": {
+                "got": 5.0,
+                "human": 20.0,
+                "comment": "命中 1/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C07 简答要点对但夹带错误说法",
+            "human_total": 90.0,
+            "actual_total": 75.0,
+            "total_diff": -15.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              5.0,
+              10.0
+            ],
+            "essay_got": [
+              20.0,
+              15.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 20.0,
+                "human": 25.0,
+                "comment": "命中 4/6 个得分点。"
+              },
+              "5": {
+                "got": 15.0,
+                "human": 25.0,
+                "comment": "命中 3/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C08 判断题用口语化“正确”作答",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C09 多选题漏选一个正确项",
+            "human_total": 80.0,
+            "actual_total": 80.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C10 简答题留空",
+            "human_total": 40.0,
+            "actual_total": 40.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              0.0,
+              0.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "命中 0/6 个得分点。"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "命中 0/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C11 简答题复述题干无实质要点",
+            "human_total": 40.0,
+            "actual_total": 40.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              0.0,
+              0.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "命中 0/6 个得分点。"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "命中 0/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C12 客观题答案小写与乱序",
+            "human_total": 60.0,
+            "actual_total": 40.0,
+            "total_diff": -20.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              10.0,
+              10.0
+            ],
+            "essay_got": [
+              0.0,
+              0.0
+            ],
+            "essay_human": [
+              10.0,
+              10.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 10.0,
+                "comment": "命中 0/6 个得分点。"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 10.0,
+                "comment": "命中 0/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C13 简答用同义表述",
+            "human_total": 90.0,
+            "actual_total": 40.0,
+            "total_diff": -50.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              25.0,
+              25.0
+            ],
+            "essay_got": [
+              0.0,
+              0.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 25.0,
+                "comment": "命中 0/6 个得分点。"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 25.0,
+                "comment": "命中 0/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C14 判断题答“否”",
+            "human_total": 90.0,
+            "actual_total": 90.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "offline_rule",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "命中 6/6 个得分点。"
+              }
+            }
+          }
+        ],
+        "run": 1
+      }
+    ]
+  },
+  "strict_overall_score": 0.7643,
+  "strict_overall_components": [
+    {
+      "metric": "objective_accuracy",
+      "value": 1.0,
+      "weight": 0.1
+    },
+    {
+      "metric": "essay_within_10pct",
+      "value": 0.6071,
+      "weight": 0.15
+    }
+  ],
+  "strict_overall_formula": "hit@k*0.30 + mrr*0.10 + schema_rate*0.15 + fact_ok_rate*0.20 + objective_accuracy*0.10 + essay_within_10pct*0.15（缺失子项按剩余权重归一化，fact_ok_rate 不可用时自动剔除）"
+}

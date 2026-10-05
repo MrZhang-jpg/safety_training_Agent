@@ -1,0 +1,5179 @@
+{
+  "meta": {
+    "evaluator": "StrictAgentEvaluator v1.0",
+    "backend": "openrouter",
+    "llm_model": "apodex/apodex-1.1-mini:free",
+    "dataset": "eval/eval_questions_strict.json",
+    "retrieval_samples": 80,
+    "exam_crafts": 8,
+    "grading_cases": 14,
+    "runs_exam": 2,
+    "runs_grading": 3,
+    "fact_check": false,
+    "stages_done": [
+      "retrieval",
+      "exam",
+      "grading"
+    ],
+    "timestamp": "2026-10-03T10:54:20",
+    "llm_calls": 0,
+    "llm_calls_total": 0,
+    "llm_calls_ok": 0,
+    "llm_calls_failed": 0,
+    "llm_errors": [],
+    "quota_exhausted": false,
+    "wall_clock_s": 0.0
+  },
+  "retrieval": {
+    "k": 6,
+    "overall": {
+      "samples": 80,
+      "hit@1": 0.7125,
+      "hit@3": 0.8125,
+      "hit@k": 0.925,
+      "mrr": 0.7758,
+      "term_coverage_topk": 0.9875,
+      "term_coverage_gold": 0.8812
+    },
+    "by_category": {
+      "colloquial": {
+        "samples": 16,
+        "hit@1": 0.5625,
+        "hit@3": 0.8125,
+        "hit@k": 0.8125,
+        "mrr": 0.6562,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.6875
+      },
+      "cross_craft": {
+        "samples": 12,
+        "hit@1": 0.8333,
+        "hit@3": 0.8333,
+        "hit@k": 1.0,
+        "mrr": 0.8667,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.9167
+      },
+      "literal": {
+        "samples": 12,
+        "hit@1": 1.0,
+        "hit@3": 1.0,
+        "hit@k": 1.0,
+        "mrr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.9583
+      },
+      "numeric_spec": {
+        "samples": 8,
+        "hit@1": 0.75,
+        "hit@3": 0.875,
+        "hit@k": 1.0,
+        "mrr": 0.8229,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0
+      },
+      "policy": {
+        "samples": 6,
+        "hit@1": 0.8333,
+        "hit@3": 1.0,
+        "hit@k": 1.0,
+        "mrr": 0.9167,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0
+      },
+      "scenario": {
+        "samples": 14,
+        "hit@1": 0.6429,
+        "hit@3": 0.7143,
+        "hit@k": 0.9286,
+        "mrr": 0.7202,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.9286
+      },
+      "typo": {
+        "samples": 12,
+        "hit@1": 0.5,
+        "hit@3": 0.5833,
+        "hit@k": 0.8333,
+        "mrr": 0.5833,
+        "term_coverage_topk": 0.9167,
+        "term_coverage_gold": 0.8333
+      }
+    },
+    "misses": [
+      {
+        "id": 13,
+        "category": "colloquial",
+        "query": "爬高上低的活儿要注意啥",
+        "expected_source": "高空|高处|四知卡",
+        "top1_source": "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+      },
+      {
+        "id": 17,
+        "category": "colloquial",
+        "query": "焊东西的时候火星子乱飞咋办",
+        "expected_source": "电焊|焊",
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx"
+      },
+      {
+        "id": 22,
+        "category": "colloquial",
+        "query": "复工第一天要做什么安全动作",
+        "expected_source": "节后复工|复工",
+        "top1_source": "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx"
+      },
+      {
+        "id": 33,
+        "category": "typo",
+        "query": "遂道施工安全要求",
+        "expected_source": "隧道",
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx"
+      },
+      {
+        "id": 34,
+        "category": "typo",
+        "query": "刚筋绑扎安全要求",
+        "expected_source": "钢筋",
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx"
+      },
+      {
+        "id": 58,
+        "category": "scenario",
+        "query": "有人触电了怎么救人",
+        "expected_source": "电工|各工种",
+        "top1_source": "安全交底/安全技术交底（水波纹工班）2022.11.11.doc"
+      }
+    ],
+    "gold_coverage_gaps": [
+      {
+        "id": 2,
+        "category": "literal",
+        "query": "电工施工现场临时用电安全操作规程",
+        "term_coverage_gold": 0.5
+      },
+      {
+        "id": 16,
+        "category": "colloquial",
+        "query": "挖机干活的时候旁边有人行不行",
+        "term_coverage_gold": 0.0
+      },
+      {
+        "id": 18,
+        "category": "colloquial",
+        "query": "工地上的电焊机漏电了咋整",
+        "term_coverage_gold": 0.0
+      },
+      {
+        "id": 51,
+        "category": "cross_craft",
+        "query": "装载机和挖掘机作业半径内的人员管控",
+        "term_coverage_gold": 0.0
+      }
+    ],
+    "details": [
+      {
+        "id": 1,
+        "category": "literal",
+        "query": "架子工脚手架搭设有哪些安全要求",
+        "expected_source": "四知卡|架子",
+        "expected_terms": [
+          "脚手",
+          "防护"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx"
+        ]
+      },
+      {
+        "id": 2,
+        "category": "literal",
+        "query": "电工施工现场临时用电安全操作规程",
+        "expected_source": "电工",
+        "expected_terms": [
+          "电工",
+          "用电"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.5,
+        "gold_in_topk": 3,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/电工安全教育培训试卷.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/电工安全教育培训试卷.doc",
+          "安全教育培训试题和课件/安全培训试题/电工安全教育培训试卷.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/电工安全知识培训教材.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/施工作业人员安全教育培训材料.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc"
+        ]
+      },
+      {
+        "id": 3,
+        "category": "literal",
+        "query": "高处作业高空作业安全防护措施",
+        "expected_source": "高空|高处",
+        "expected_terms": [
+          "安全带",
+          "高处"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+        "top_sources": [
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc",
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "安全交底/斜拉索安全交底 - 2024.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc"
+        ]
+      },
+      {
+        "id": 4,
+        "category": "literal",
+        "query": "起重吊装作业安全要求和指挥规定",
+        "expected_source": "起重|吊装",
+        "expected_terms": [
+          "吊装",
+          "指挥"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+        "top_sources": [
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全交底/起重吊装安全交底.docx",
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/施工作业人员安全教育培训材料.doc"
+        ]
+      },
+      {
+        "id": 5,
+        "category": "literal",
+        "query": "基坑开挖施工安全支护要求",
+        "expected_source": "基坑",
+        "expected_terms": [
+          "基坑"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/基坑施工安全技术交底 2022.3.14.docx",
+        "top_sources": [
+          "安全交底/基坑施工安全技术交底 2022.3.14.docx",
+          "安全交底/基坑施工安全技术交底 2022.3.14.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc"
+        ]
+      },
+      {
+        "id": 6,
+        "category": "literal",
+        "query": "人工挖孔桩施工安全措施",
+        "expected_source": "人工挖孔桩|挖孔桩",
+        "expected_terms": [
+          "孔",
+          "护壁"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc"
+        ]
+      },
+      {
+        "id": 7,
+        "category": "literal",
+        "query": "隧道施工作业安全要求",
+        "expected_source": "隧道",
+        "expected_terms": [
+          "隧道",
+          "开挖"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 5,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/隧道初支试卷.docx",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/隧道初支试卷.docx",
+          "安全教育培训试题和课件/安全培训试题/隧道仰拱二衬试卷.docx",
+          "安全教育培训试题和课件/安全培训试题/隧道开挖试卷.docx",
+          "安全教育培训试题和课件/安全培训试题/隧道初支试卷.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全教育培训试题和课件/安全培训试题/隧道仰拱二衬试卷.docx"
+        ]
+      },
+      {
+        "id": 8,
+        "category": "literal",
+        "query": "爆破作业安全警戒要求",
+        "expected_source": "爆破",
+        "expected_terms": [
+          "爆破"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 9,
+        "category": "literal",
+        "query": "钻孔桩桩基施工安全",
+        "expected_source": "钻孔桩|桩工",
+        "expected_terms": [
+          "钻机",
+          "桩"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/钻孔桩安全技术交底.docx",
+        "top_sources": [
+          "安全交底/钻孔桩安全技术交底.docx",
+          "安全交底/钻孔桩安全技术交底.docx",
+          "安全交底/桩工安全技术交底.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc"
+        ]
+      },
+      {
+        "id": 10,
+        "category": "literal",
+        "query": "生产安全事故应急救援预案流程",
+        "expected_source": "应急预案",
+        "expected_terms": [
+          "应急"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+        "top_sources": [
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "应急预案/公司安全〔2022〕235号关于印发《中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案》(F版)的通知.pdf",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf"
+        ]
+      },
+      {
+        "id": 11,
+        "category": "literal",
+        "query": "钢筋加工与绑扎安全要求",
+        "expected_source": "钢筋",
+        "expected_terms": [
+          "钢筋"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/钢筋绑扎安全技术交底.doc",
+        "top_sources": [
+          "安全交底/钢筋绑扎安全技术交底.doc",
+          "安全交底/钢筋绑扎安全技术交底.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/钢筋加工工班人员培训讲义.doc",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 12,
+        "category": "literal",
+        "query": "塔吊安装拆除安全装置要求",
+        "expected_source": "塔吊",
+        "expected_terms": [
+          "塔吊"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+        "top_sources": [
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+          "安全交底/塔吊拆除安全技术交底.doc",
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+          "安全交底/塔吊拆除安全技术交底.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc"
+        ]
+      },
+      {
+        "id": 13,
+        "category": "colloquial",
+        "query": "爬高上低的活儿要注意啥",
+        "expected_source": "高空|高处|四知卡",
+        "expected_terms": [
+          "安全带"
+        ],
+        "rank": 0,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": false,
+        "rr": 0.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 0,
+        "top1_source": "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+        "top_sources": [
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/隧道施工人员安全教育培训资料.doc",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/隧道施工人员安全教育培训资料.doc"
+        ]
+      },
+      {
+        "id": 14,
+        "category": "colloquial",
+        "query": "电闸箱怎么弄才安全",
+        "expected_source": "电工|操作规程|四知卡",
+        "expected_terms": [
+          "配电箱"
+        ],
+        "rank": 3,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.3333,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全交底/桥涵施工安全技术交底（总体）2022.9.29.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx"
+        ]
+      },
+      {
+        "id": 15,
+        "category": "colloquial",
+        "query": "吊车起吊的时候下面能不能站人",
+        "expected_source": "起重|吊装",
+        "expected_terms": [
+          "站人"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+        "top_sources": [
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全交底/起重吊装安全交底.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/钢支撑安全技术交底2022.8.26.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 16,
+        "category": "colloquial",
+        "query": "挖机干活的时候旁边有人行不行",
+        "expected_source": "挖机|挖掘机",
+        "expected_terms": [
+          "挖机"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/挖机操作安全技术交底.doc",
+        "top_sources": [
+          "安全交底/挖机操作安全技术交底.doc",
+          "安全交底/挖机操作安全技术交底.doc",
+          "安全交底/基坑施工安全技术交底 2022.3.14.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全交底/钻孔桩安全技术交底.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 17,
+        "category": "colloquial",
+        "query": "焊东西的时候火星子乱飞咋办",
+        "expected_source": "电焊|焊",
+        "expected_terms": [
+          "焊"
+        ],
+        "rank": 0,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": false,
+        "rr": 0.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 0,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 18,
+        "category": "colloquial",
+        "query": "工地上的电焊机漏电了咋整",
+        "expected_source": "电工|电焊",
+        "expected_terms": [
+          "漏电"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/电焊工安全技术交底.doc",
+        "top_sources": [
+          "安全交底/电焊工安全技术交底.doc",
+          "安全交底/电焊工安全技术交底.doc",
+          "安全教育培训试题和课件/安全培训试题/电焊工安全教育培训试题.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/钢筋加工工班人员培训讲义.doc"
+        ]
+      },
+      {
+        "id": 19,
+        "category": "colloquial",
+        "query": "大梁吊装就位的时候要注意什么",
+        "expected_source": "起重|吊装|架梁",
+        "expected_terms": [
+          "吊装"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/起重吊装安全交底.docx",
+        "top_sources": [
+          "安全交底/起重吊装安全交底.docx",
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 20,
+        "category": "colloquial",
+        "query": "桥面上的栏杆施工安全要求",
+        "expected_source": "栏板|桥面|高空",
+        "expected_terms": [
+          "防护"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全交底/栏板施工安全交底（桥涵三高空作业）2023.12.10.docx",
+        "top_sources": [
+          "安全交底/栏板施工安全交底（桥涵三高空作业）2023.12.10.docx",
+          "安全交底/六跨现浇箱梁侧模防护安装安全技术交底2023.7.23.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全交底/栏板施工安全交底（桥涵三高空作业）2023.12.10.docx",
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc"
+        ]
+      },
+      {
+        "id": 21,
+        "category": "colloquial",
+        "query": "冬天干活要注意啥",
+        "expected_source": "冬季",
+        "expected_terms": [
+          "冬季"
+        ],
+        "rank": 3,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.3333,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 1,
+        "top1_source": "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+        "top_sources": [
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "安全交底/冬季施工安全技术交底2022.11.18.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "安全教育培训试题和课件/安全培训试题/A卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/安全培训试题/5--（钢筋加工作业人员）安全教育试题及答案.doc"
+        ]
+      },
+      {
+        "id": 22,
+        "category": "colloquial",
+        "query": "复工第一天要做什么安全动作",
+        "expected_source": "节后复工|复工",
+        "expected_terms": [
+          "交底"
+        ],
+        "rank": 0,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": false,
+        "rr": 0.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 0,
+        "top1_source": "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+        "top_sources": [
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "安全交底/安全技术交底（斜拉索工班）.doc",
+          "安全交底/安全技术交底（斜拉索工班）.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/施工作业人员安全教育培训材料.doc",
+          "安全教育培训试题和课件/安全培训试题/4--（桥涵作业人员）安全教育试题及答案.doc"
+        ]
+      },
+      {
+        "id": 23,
+        "category": "colloquial",
+        "query": "管沟旁边挖土碰到管线怎么办",
+        "expected_source": "管线",
+        "expected_terms": [
+          "管线"
+        ],
+        "rank": 3,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.3333,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+        "top_sources": [
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/管线安全交底2022.10.2.doc",
+          "安全交底/管线安全交底2022.10.2.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx"
+        ]
+      },
+      {
+        "id": 24,
+        "category": "colloquial",
+        "query": "过年留守工地的人要注意什么",
+        "expected_source": "春节留守|留守",
+        "expected_terms": [
+          "留守"
+        ],
+        "rank": 2,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.5,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+        "top_sources": [
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全交底/春节留守人员安全交底.doc",
+          "安全交底/春节留守人员安全交底.doc",
+          "安全交底/安全技术交底（斜拉索工班）.doc",
+          "安全交底/安全技术交底（斜拉索工班）.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 25,
+        "category": "colloquial",
+        "query": "拆挂篮的时候怎么防坠落",
+        "expected_source": "挂篮",
+        "expected_terms": [
+          "挂篮"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全交底/挂篮安装安全技术交底.doc",
+        "top_sources": [
+          "安全交底/挂篮安装安全技术交底.doc",
+          "安全交底/挂篮安装安全技术交底.doc",
+          "安全交底/挂篮拆除施工安全交底（桥涵二工班）2024.1.4.docx",
+          "安全交底/挂篮拆除施工安全交底（桥涵二工班）2024.1.4.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 26,
+        "category": "colloquial",
+        "query": "拉索张拉的时候人站多远离索管才安全",
+        "expected_source": "斜拉索|张拉",
+        "expected_terms": [
+          "斜拉索"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/张拉压浆作业安全技术交底.doc",
+        "top_sources": [
+          "安全交底/张拉压浆作业安全技术交底.doc",
+          "安全交底/张拉压浆作业安全技术交底.doc",
+          "安全交底/斜拉索安全交底.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx"
+        ]
+      },
+      {
+        "id": 27,
+        "category": "colloquial",
+        "query": "桩头凿除的工序是什么",
+        "expected_source": "破桩",
+        "expected_terms": [
+          "桩头"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/破桩安全技术交底2022.9.8.docx",
+        "top_sources": [
+          "安全交底/破桩安全技术交底2022.9.8.docx",
+          "安全交底/破桩安全技术交底2022.9.8.docx",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 28,
+        "category": "colloquial",
+        "query": "钢支撑拆除要注意什么",
+        "expected_source": "钢支撑",
+        "expected_terms": [
+          "钢支撑"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/钢支撑安全技术交底2022.8.26.doc",
+        "top_sources": [
+          "安全交底/钢支撑安全技术交底2022.8.26.doc",
+          "安全交底/钢支撑安全技术交底2022.8.26.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 29,
+        "category": "typo",
+        "query": "脚手脚搭设安全要求",
+        "expected_source": "架子|四知卡|操作规程",
+        "expected_terms": [
+          "脚手"
+        ],
+        "rank": 3,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.3333,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+        "top_sources": [
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 30,
+        "category": "typo",
+        "query": "电揽敷设安全要求",
+        "expected_source": "电工|操作规程",
+        "expected_terms": [
+          "电缆"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+        "top_sources": [
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/钢筋加工工班人员培训讲义.doc",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 31,
+        "category": "typo",
+        "query": "起中吊装作业安全要求",
+        "expected_source": "起重|吊装",
+        "expected_terms": [
+          "吊装"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+        "top_sources": [
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全交底/起重吊装安全交底.docx",
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 32,
+        "category": "typo",
+        "query": "基抗开挖要注意啥",
+        "expected_source": "基坑",
+        "expected_terms": [
+          "基坑"
+        ],
+        "rank": 6,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.1667,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 1,
+        "top1_source": "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+        "top_sources": [
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全交底/钢板桩施工安全技术交底.doc",
+          "安全交底/钢板桩施工安全技术交底.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "安全交底/桥涵施工安全技术交底（总体）2022.9.29.docx",
+          "安全交底/基坑施工安全技术交底 2022.3.14.docx"
+        ]
+      },
+      {
+        "id": 33,
+        "category": "typo",
+        "query": "遂道施工安全要求",
+        "expected_source": "隧道",
+        "expected_terms": [
+          "隧道"
+        ],
+        "rank": 0,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": false,
+        "rr": 0.0,
+        "term_coverage_topk": 0.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 0,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/施工作业人员安全教育培训材料.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc"
+        ]
+      },
+      {
+        "id": 34,
+        "category": "typo",
+        "query": "刚筋绑扎安全要求",
+        "expected_source": "钢筋",
+        "expected_terms": [
+          "钢筋"
+        ],
+        "rank": 0,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": false,
+        "rr": 0.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 0,
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+        "top_sources": [
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 35,
+        "category": "typo",
+        "query": "塔掉安装安全要求",
+        "expected_source": "塔吊",
+        "expected_terms": [
+          "塔吊"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+        "top_sources": [
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全交底/塔吊拆除安全技术交底.doc",
+          "安全交底/塔吊拆除安全技术交底.doc"
+        ]
+      },
+      {
+        "id": 36,
+        "category": "typo",
+        "query": "人工挖空桩安全要求",
+        "expected_source": "人工挖孔桩|挖孔桩",
+        "expected_terms": [
+          "孔"
+        ],
+        "rank": 4,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.25,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 37,
+        "category": "typo",
+        "query": "爆坡作业警戒要求",
+        "expected_source": "爆破",
+        "expected_terms": [
+          "爆破"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 1,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "安全交底/挖机操作安全技术交底.doc",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc"
+        ]
+      },
+      {
+        "id": 38,
+        "category": "typo",
+        "query": "高外作业安全带怎么用",
+        "expected_source": "高空|高处|四知卡",
+        "expected_terms": [
+          "安全带"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc",
+        "top_sources": [
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/隧道施工人员安全教育培训资料.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc"
+        ]
+      },
+      {
+        "id": 39,
+        "category": "typo",
+        "query": "电焊工安全交低内容",
+        "expected_source": "电焊|交底",
+        "expected_terms": [
+          "电焊"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/电焊工安全教育培训试题.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/电焊工安全教育培训试题.doc",
+          "安全交底/电焊工安全技术交底.doc",
+          "安全教育培训试题和课件/安全培训试题/电焊工安全教育培训试题.doc",
+          "安全交底/电焊工安全技术交底.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/钢筋加工工班人员培训讲义.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 40,
+        "category": "typo",
+        "query": "龙门吊司机操作安全要求",
+        "expected_source": "门式起重机|特种设备|四知卡",
+        "expected_terms": [
+          "起重机"
+        ],
+        "rank": 4,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.25,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+        "top_sources": [
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 41,
+        "category": "cross_craft",
+        "query": "同样是桩，人工挖孔桩和钻孔桩的安全要求差异",
+        "expected_source": "人工挖孔桩|钻孔桩|桩工",
+        "expected_terms": [
+          "孔"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+        "top_sources": [
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 42,
+        "category": "cross_craft",
+        "query": "塔吊和施工升降机各自的安全要求",
+        "expected_source": "塔吊|升降机",
+        "expected_terms": [
+          "塔吊"
+        ],
+        "rank": 5,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.2,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc"
+        ]
+      },
+      {
+        "id": 43,
+        "category": "cross_craft",
+        "query": "汽车吊和门式起重机的操作要求一样吗",
+        "expected_source": "起重|门式起重机|特种设备",
+        "expected_terms": [
+          "起重机"
+        ],
+        "rank": 5,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.2,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 1,
+        "top1_source": "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+        "top_sources": [
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx"
+        ]
+      },
+      {
+        "id": 44,
+        "category": "cross_craft",
+        "query": "破桩和截桩头有什么区别",
+        "expected_source": "破桩",
+        "expected_terms": [
+          "桩头"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/破桩安全技术交底2022.9.8.docx",
+        "top_sources": [
+          "安全交底/破桩安全技术交底2022.9.8.docx",
+          "安全交底/破桩安全技术交底2022.9.8.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 45,
+        "category": "cross_craft",
+        "query": "钢板桩和钢支撑是同一个东西吗",
+        "expected_source": "钢板桩|钢支撑",
+        "expected_terms": [
+          "钢板桩"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全交底/钢板桩施工安全技术交底.doc",
+        "top_sources": [
+          "安全交底/钢板桩施工安全技术交底.doc",
+          "安全交底/钢板桩施工安全技术交底.doc",
+          "安全交底/钢支撑安全技术交底2022.8.26.doc",
+          "安全交底/钢支撑安全技术交底2022.8.26.doc",
+          "安全交底/桩工安全技术交底.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 46,
+        "category": "cross_craft",
+        "query": "挂篮和斜拉索施工都算高处作业吗",
+        "expected_source": "挂篮|斜拉索",
+        "expected_terms": [
+          "高处"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 6,
+        "top1_source": "安全交底/挂篮拆除施工安全交底（桥涵二工班）2024.1.4.docx",
+        "top_sources": [
+          "安全交底/挂篮拆除施工安全交底（桥涵二工班）2024.1.4.docx",
+          "安全交底/挂篮安装安全技术交底.doc",
+          "安全交底/挂篮安装安全技术交底.doc",
+          "安全交底/挂篮拆除施工安全交底（桥涵二工班）2024.1.4.docx",
+          "安全交底/斜拉索安全交底 - 2024.doc",
+          "安全交底/斜拉索安全交底.doc"
+        ]
+      },
+      {
+        "id": 47,
+        "category": "cross_craft",
+        "query": "司索信号工和起重吊装工的职责怎么分",
+        "expected_source": "司索|起重|吊装",
+        "expected_terms": [
+          "信号"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/司索信号工安全技术交底.docx",
+        "top_sources": [
+          "安全交底/司索信号工安全技术交底.docx",
+          "安全交底/司索信号工安全技术交底.docx",
+          "安全交底/起重吊装安全交底.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 48,
+        "category": "cross_craft",
+        "query": "混凝土工和搅拌机操作手的安全要求",
+        "expected_source": "浇砼|搅拌机|各工种",
+        "expected_terms": [
+          "搅拌机"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/浇砼安全技术交底.doc",
+        "top_sources": [
+          "安全交底/浇砼安全技术交底.doc",
+          "安全交底/浇砼安全技术交底.doc",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全教育培训试题和课件/安全培训试题/搅拌机操作手.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 49,
+        "category": "cross_craft",
+        "query": "架子工和模板工的四知卡内容",
+        "expected_source": "四知卡",
+        "expected_terms": [
+          "四知卡"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx"
+        ]
+      },
+      {
+        "id": 50,
+        "category": "cross_craft",
+        "query": "爆破工和隧道工的交叉作业风险",
+        "expected_source": "爆破|隧道",
+        "expected_terms": [
+          "爆破"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/隧道开挖试卷.docx",
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全教育培训试题和课件/安全培训试题/隧道开挖试卷.docx"
+        ]
+      },
+      {
+        "id": 51,
+        "category": "cross_craft",
+        "query": "装载机和挖掘机作业半径内的人员管控",
+        "expected_source": "装载机|挖机",
+        "expected_terms": [
+          "装载机"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/挖机操作安全技术交底.doc",
+        "top_sources": [
+          "安全交底/挖机操作安全技术交底.doc",
+          "安全交底/挖机操作安全技术交底.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 52,
+        "category": "cross_craft",
+        "query": "罐车司机和渣土车司机的行车安全",
+        "expected_source": "罐车",
+        "expected_terms": [
+          "罐车"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/罐车司机.docx",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/罐车司机.docx",
+          "安全教育培训试题和课件/安全培训试题/罐车司机.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/隧道施工人员安全教育培训资料.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/施工作业人员安全教育培训材料.doc",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 53,
+        "category": "scenario",
+        "query": "井口没有围栏，人员掉进桩孔里怎么防",
+        "expected_source": "人工挖孔桩|挖孔桩|各工种",
+        "expected_terms": [
+          "孔口"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+        "top_sources": [
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc"
+        ]
+      },
+      {
+        "id": 54,
+        "category": "scenario",
+        "query": "工人在两米以上没有护栏的地方干活要系什么",
+        "expected_source": "高空|高处|四知卡",
+        "expected_terms": [
+          "安全带"
+        ],
+        "rank": 3,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.3333,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/2--（路基施工）三级安全教育试题.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/2--（路基施工）三级安全教育试题.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc",
+          "安全教育培训试题和课件/安全培训试题/A卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/安全培训试题/4--（桥涵作业人员）安全教育试题及答案.doc",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc"
+        ]
+      },
+      {
+        "id": 55,
+        "category": "scenario",
+        "query": "六级大风还能不能继续吊装作业",
+        "expected_source": "起重|吊装",
+        "expected_terms": [
+          "六级"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+        "top_sources": [
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "安全交底/起重吊装安全交底.docx",
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全教育培训试题和课件/安全培训试题/3--（桩基施工）三级安全教育培训试题.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx"
+        ]
+      },
+      {
+        "id": 56,
+        "category": "scenario",
+        "query": "有人在密闭的地沟里焊东西晕倒了怎么办",
+        "expected_source": "电焊|外部劳务|操作规程",
+        "expected_terms": [
+          "焊"
+        ],
+        "rank": 4,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.25,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc"
+        ]
+      },
+      {
+        "id": 57,
+        "category": "scenario",
+        "query": "脚手架上堆料太多会不会塌",
+        "expected_source": "四知卡|各工种|操作规程",
+        "expected_terms": [
+          "荷载"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 6,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx"
+        ]
+      },
+      {
+        "id": 58,
+        "category": "scenario",
+        "query": "有人触电了怎么救人",
+        "expected_source": "电工|各工种",
+        "expected_terms": [
+          "触电"
+        ],
+        "rank": 0,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": false,
+        "rr": 0.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 0.0,
+        "gold_in_topk": 0,
+        "top1_source": "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+        "top_sources": [
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全教育培训试题和课件/安全培训试题/1--(路基附属）三级安全教育试题 .docx",
+          "安全教育培训试题和课件/安全培训试题/1--(路基附属）三级安全教育试题 .docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf"
+        ]
+      },
+      {
+        "id": 59,
+        "category": "scenario",
+        "query": "边坡突然涌水把孔里的人淹了怎么办",
+        "expected_source": "人工挖孔桩|挖孔桩",
+        "expected_terms": [
+          "水"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 1,
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+        "top_sources": [
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "事故案例/建筑施工典型事故案例汇编（2021-2026）.docx",
+          "事故案例/建筑施工典型事故案例汇编（2021-2026）.docx",
+          "安全交底/桥涵施工安全技术交底（总体）2022.9.29.docx"
+        ]
+      },
+      {
+        "id": 60,
+        "category": "scenario",
+        "query": "吊篮的夹码连接件断了导致人从高处坠落",
+        "expected_source": "事故案例|起重",
+        "expected_terms": [
+          "吊篮"
+        ],
+        "rank": 4,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.25,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/栏板施工安全交底（桥涵三高空作业）2023.12.10.docx",
+        "top_sources": [
+          "安全交底/栏板施工安全交底（桥涵三高空作业）2023.12.10.docx",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc",
+          "安全交底/栏板施工安全交底（桥涵三高空作业）2023.12.10.docx",
+          "事故案例/建筑施工典型事故案例汇编（2021-2026）.docx",
+          "事故案例/建筑施工事故台账（2021-2026）.xlsx",
+          "事故案例/建筑施工典型事故案例汇编（2021-2026）.docx"
+        ]
+      },
+      {
+        "id": 61,
+        "category": "scenario",
+        "query": "钢筋切断机切短料的时候把手伤了",
+        "expected_source": "钢筋",
+        "expected_terms": [
+          "切断机"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/5--（钢筋加工作业人员）安全教育试题及答案.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/5--（钢筋加工作业人员）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/钢筋加工工班人员培训讲义.doc",
+          "安全交底/钢筋绑扎安全技术交底.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全教育培训试题和课件/安全培训试题/5--（钢筋加工作业人员）安全教育试题及答案.doc",
+          "安全交底/桥涵施工安全技术交底（总体）2022.9.29.docx"
+        ]
+      },
+      {
+        "id": 62,
+        "category": "scenario",
+        "query": "塔吊拆除时钢丝绳断了怎么防",
+        "expected_source": "塔吊",
+        "expected_terms": [
+          "塔吊"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/塔吊拆除安全技术交底.doc",
+        "top_sources": [
+          "安全交底/塔吊拆除安全技术交底.doc",
+          "安全交底/塔吊拆除安全技术交底.doc",
+          "安全交底/塔吊安装安全技术交底2022.12.3.doc",
+          "安全交底/钢支撑安全技术交底2022.8.26.doc",
+          "安全交底/钢支撑安全技术交底2022.8.26.doc",
+          "安全交底/斜拉索安全交底 - 2024.doc"
+        ]
+      },
+      {
+        "id": 63,
+        "category": "scenario",
+        "query": "高墩翻模外侧施工平台要铺多厚的木板",
+        "expected_source": "桥涵|高空|各工种",
+        "expected_terms": [
+          "木板"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/A卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/A卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/安全培训试题/4--（桥涵作业人员）安全教育试题及答案.doc",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc"
+        ]
+      },
+      {
+        "id": 64,
+        "category": "scenario",
+        "query": "临时用电没有装漏电保护器算不算违章",
+        "expected_source": "电工|操作规程|各工种",
+        "expected_terms": [
+          "漏电保护"
+        ],
+        "rank": 4,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.25,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/施工作业人员安全教育培训材料.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/培训课件及培训材料/施工作业人员安全教育培训材料.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "安全交底/桥涵施工安全技术交底（总体）2022.9.29.docx",
+          "安全教育培训试题和课件/安全培训试题/各工种安全教育试卷及答案.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx"
+        ]
+      },
+      {
+        "id": 65,
+        "category": "scenario",
+        "query": "交叉作业时上下在同一垂直面怎么办",
+        "expected_source": "桥涵|四知卡|各工种",
+        "expected_terms": [
+          "交叉作业"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+        "top_sources": [
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf"
+        ]
+      },
+      {
+        "id": 66,
+        "category": "scenario",
+        "query": "电焊机空载的时候会不会消耗电能",
+        "expected_source": "电焊|桥面系|各工种",
+        "expected_terms": [
+          "焊机"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/电焊工安全教育培训试题.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/电焊工安全教育培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/电焊工安全教育培训试题.doc",
+          "安全交底/电焊工安全技术交底.doc",
+          "安全教育培训试题和课件/安全培训试题/5  (桥面系作业人员）安全教育培训试卷.doc",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 67,
+        "category": "numeric_spec",
+        "query": "220kV 输电线路保护区的范围是多少米",
+        "expected_source": "管线|操作规程",
+        "expected_terms": [
+          "保护区"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 5,
+        "top1_source": "安全交底/管线安全交底2022.10.2.doc",
+        "top_sources": [
+          "安全交底/管线安全交底2022.10.2.doc",
+          "安全交底/管线安全交底2022.10.2.doc",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf"
+        ]
+      },
+      {
+        "id": 68,
+        "category": "numeric_spec",
+        "query": "高处作业多少米以上必须系安全带",
+        "expected_source": "高空|高处|各工种",
+        "expected_terms": [
+          "2米"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+        "top_sources": [
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+          "安全交底/高空作业安全技术交底（桥涵二工班）2023.3.25.doc",
+          "安全交底/安全交底（桥涵三高空作业）2022.7.27.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全交底/安全技术交底（水波纹工班）2022.11.11.doc",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf"
+        ]
+      },
+      {
+        "id": 69,
+        "category": "numeric_spec",
+        "query": "起重机司机十不吊包含哪些情形",
+        "expected_source": "起重|吊装",
+        "expected_terms": [
+          "十不吊"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 5,
+        "top1_source": "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+        "top_sources": [
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "安全交底/起重吊装安全交底.docx",
+          "安全交底/起重吊装作业安全技术交底（桥涵三工班）2023.9。26.doc",
+          "安全交底/起重吊装作业安全技术交底（桥涵一工班）2023.8.4.doc",
+          "安全交底/桥涵作业安全技术交底2022.9.28.doc",
+          "安全交底/起重吊装安全交底.docx"
+        ]
+      },
+      {
+        "id": 70,
+        "category": "numeric_spec",
+        "query": "打桩时操作人员要离桩锤中心多远监视",
+        "expected_source": "桩工|钢板桩",
+        "expected_terms": [
+          "桩锤"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全交底/桩工安全技术交底.docx",
+        "top_sources": [
+          "安全交底/桩工安全技术交底.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/二公司操作规程/公司《安全生产操作规程》.docx",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "安全交底/桩工安全技术交底.docx"
+        ]
+      },
+      {
+        "id": 71,
+        "category": "numeric_spec",
+        "query": "钢管脚手架底层步距不应大于多少",
+        "expected_source": "各工种|钢筋|操作规程",
+        "expected_terms": [
+          "脚手"
+        ],
+        "rank": 4,
+        "hit@1": false,
+        "hit@3": false,
+        "hit@k": true,
+        "rr": 0.25,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/安全培训试题/C卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/安全培训试题/5--（钢筋加工作业人员）安全教育试题及答案.doc",
+          "操作规程/二公司操作规程/附件2：安全生产操作规程1（2022版）.pdf",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf"
+        ]
+      },
+      {
+        "id": 72,
+        "category": "numeric_spec",
+        "query": "安全网使用多久必须进行绳的强度测试",
+        "expected_source": "桥涵|连续梁|各工种",
+        "expected_terms": [
+          "安全网"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/7--（连续梁作业人员）安全教育试题及答案 - 副本.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/7--（连续梁作业人员）安全教育试题及答案 - 副本.doc",
+          "安全教育培训试题和课件/安全培训试题/4--（桥涵作业人员）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/安全培训试题/A卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "操作规程/集团操作规程/中铁十一局集团有限公司安全生产操作规程（2019版）.pdf",
+          "安全教育培训试题和课件/安全培训试题/3--（桩基施工）三级安全教育培训试题.doc"
+        ]
+      },
+      {
+        "id": 73,
+        "category": "numeric_spec",
+        "query": "室内明敷主干线距地高度不得小于多少",
+        "expected_source": "桥涵|各工种|操作规程",
+        "expected_terms": [
+          "主干线"
+        ],
+        "rank": 3,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.3333,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/1--(路基附属）三级安全教育试题 .docx",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/1--(路基附属）三级安全教育试题 .docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/安全培训试题/4--（桥涵作业人员）安全教育试题及答案.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "操作规程/集团操作规程/关于印发《中铁十一局集团有限公司安全生产操作规程》的通知.pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/隧道施工人员安全教育培训资料.doc"
+        ]
+      },
+      {
+        "id": 74,
+        "category": "numeric_spec",
+        "query": "人工挖孔桩孔口护圈不低于多少厘米",
+        "expected_source": "人工挖孔桩|各工种|挖孔桩",
+        "expected_terms": [
+          "护圈"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 4,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx",
+          "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "事故案例/建筑施工典型事故案例汇编（2021-2026）.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/人工挖孔桩安全培训资料.docx"
+        ]
+      },
+      {
+        "id": 75,
+        "category": "policy",
+        "query": "三级安全教育分别由谁组织、教育哪些内容",
+        "expected_source": "三级教育|三级|外部劳务",
+        "expected_terms": [
+          "三级"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 5,
+        "top1_source": "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+        "top_sources": [
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "安全教育培训试题和课件/安全培训试题/3--（桩基施工）三级安全教育培训试题.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "安全教育培训试题和课件/安全培训试题/3--（桩基施工）三级安全教育培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/8-（拌合站人员）安全教育试题.docx"
+        ]
+      },
+      {
+        "id": 76,
+        "category": "policy",
+        "query": "事故处理四不放过原则是什么",
+        "expected_source": "各工种|桥涵|四知卡|操作规程",
+        "expected_terms": [
+          "四不放过"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 1,
+        "top1_source": "安全教育培训试题和课件/安全培训试题/B卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/安全培训试题/B卷--（桥涵工班作业人员）安全教育试题及答案.doc",
+          "安全教育培训试题和课件/安全培训试题/8-（拌合站人员）安全教育试题.docx",
+          "安全教育培训试题和课件/安全培训试题/爆破作业人员安全培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/2--（路基施工）三级安全教育试题.doc",
+          "安全教育培训试题和课件/安全培训试题/7--（连续梁作业人员）安全教育试题及答案 - 副本.doc",
+          "安全教育培训试题和课件/安全培训试题/6--（人工挖孔桩施工）安全教育试题及答案.doc"
+        ]
+      },
+      {
+        "id": 77,
+        "category": "policy",
+        "query": "特种作业人员要不要持证上岗",
+        "expected_source": "外部劳务|特种设备|操作规程|四知卡",
+        "expected_terms": [
+          "特种作业"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+        "top_sources": [
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/安全培训试题/3--（桩基施工）三级安全教育培训试题.doc",
+          "安全教育培训试题和课件/安全培训试题/3--（桩基施工）三级安全教育培训试题.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/隧道施工人员安全教育培训资料.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx"
+        ]
+      },
+      {
+        "id": 78,
+        "category": "policy",
+        "query": "生产安全事故应急预案的响应分级是怎样的",
+        "expected_source": "应急预案",
+        "expected_terms": [
+          "应急"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 3,
+        "top1_source": "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+        "top_sources": [
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "应急预案/公司安全〔2022〕235号关于印发《中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案》(F版)的通知.pdf"
+        ]
+      },
+      {
+        "id": 79,
+        "category": "policy",
+        "query": "安全培训台账需要留哪些记录",
+        "expected_source": "三级教育|三级|台账",
+        "expected_terms": [
+          "教育"
+        ],
+        "rank": 1,
+        "hit@1": true,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 1.0,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+        "top_sources": [
+          "三级教育、四知卡/1、岗前“三级安全教育”组合文件 （2025年11月）.docx",
+          "事故案例/建筑施工典型事故案例汇编（2021-2026）.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/特种设备安全管理培训  .pptx",
+          "安全交底/安全技术交底（斜拉索工班）.doc",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/特种设备安全管理培训  .pptx"
+        ]
+      },
+      {
+        "id": 80,
+        "category": "policy",
+        "query": "建筑施工的三宝、四口、五临边分别指什么",
+        "expected_source": "桥涵|各工种|操作规程",
+        "expected_terms": [
+          "临边"
+        ],
+        "rank": 2,
+        "hit@1": false,
+        "hit@3": true,
+        "hit@k": true,
+        "rr": 0.5,
+        "term_coverage_topk": 1.0,
+        "term_coverage_gold": 1.0,
+        "gold_in_topk": 2,
+        "top1_source": "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+        "top_sources": [
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx",
+          "三级教育、四知卡/2、一线作业人员岗位安全“四知卡”（对应工种）.docx",
+          "安全教育培训试题和课件/培训课件及培训材料/外部劳务安全基础知识问答.doc",
+          "应急预案/附件：中铁十一局集团第二工程有限公司生产安全事故(灾难)应急预案(F版).pdf",
+          "安全教育培训试题和课件/培训课件及培训材料/桥涵施工安全培训.docx"
+        ]
+      }
+    ]
+  },
+  "exam": {
+    "runs": 2,
+    "fact_check": false,
+    "overall": {
+      "samples": 16,
+      "online_rate": 0.25,
+      "structure_valid_rate": 0.75,
+      "schema_rate": 0.0,
+      "dist_match_rate": 0.0,
+      "must_contain_coverage": 0.9688,
+      "fact_coverage": 0.7031,
+      "avg_questions": 9.88,
+      "avg_elapsed_s": 14.9
+    },
+    "per_run": [
+      {
+        "samples": 8,
+        "online_rate": 0.375,
+        "structure_valid_rate": 0.625,
+        "schema_rate": 0.0,
+        "dist_match_rate": 0.0,
+        "must_contain_coverage": 0.9375,
+        "fact_coverage": 0.6562,
+        "avg_questions": 9.0,
+        "avg_elapsed_s": 15.6
+      },
+      {
+        "samples": 8,
+        "online_rate": 0.125,
+        "structure_valid_rate": 0.875,
+        "schema_rate": 0.0,
+        "dist_match_rate": 0.0,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.75,
+        "avg_questions": 10.75,
+        "avg_elapsed_s": 14.2
+      }
+    ],
+    "stability": {
+      "online_rate": {
+        "mean": 0.25,
+        "std": 0.125,
+        "min": 0.125,
+        "max": 0.375,
+        "n": 2
+      },
+      "structure_valid_rate": {
+        "mean": 0.75,
+        "std": 0.125,
+        "min": 0.625,
+        "max": 0.875,
+        "n": 2
+      },
+      "schema_rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 2
+      },
+      "dist_match_rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 2
+      },
+      "fact_coverage": {
+        "mean": 0.7031,
+        "std": 0.0469,
+        "min": 0.6562,
+        "max": 0.75,
+        "n": 2
+      }
+    },
+    "details": [
+      {
+        "craft_type": "电工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 25.8,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 1.0,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "电焊工",
+        "edu_level": "项目级",
+        "online": false,
+        "elapsed_s": 15.5,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 1.0,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "架子工",
+        "edu_level": "班组级",
+        "online": true,
+        "elapsed_s": 10.5,
+        "structure_ok": false,
+        "must_contain_coverage": 0.5,
+        "fact_coverage": 0.25,
+        "question_count": 4,
+        "schema_ok": false,
+        "issues": [
+          "第1题 选项不足 2 个",
+          "第2题 缺少解析",
+          "第2题 多选题答案应≥2 个字母，实为 ['A. 年龄要求', '健康要求', '持证要求', '技能要求']",
+          "第3题 缺少解析",
+          "第4题 缺少解析",
+          "第4题 简答题得分点不足 2 个",
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "单选题": 1,
+          "多选题": 1,
+          "判断题": 1,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 70.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "高处作业工",
+        "edu_level": "项目级",
+        "online": true,
+        "elapsed_s": 15.4,
+        "structure_ok": false,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.25,
+        "question_count": 4,
+        "schema_ok": false,
+        "issues": [
+          "第2题 缺少解析",
+          "第3题 缺少解析",
+          "第3题 判断题答案不规范：A",
+          "第4题 缺少解析",
+          "第4题 简答题得分点不足 2 个"
+        ],
+        "q_type_dist": {
+          "单选题": 1,
+          "多选题": 1,
+          "判断题": 1,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 20.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "起重吊装工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 14.6,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 1.0,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "隧道作业工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 14.3,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.75,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "人工挖孔桩工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 14.2,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.5,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "爆破工",
+        "edu_level": "项目级",
+        "online": true,
+        "elapsed_s": 14.4,
+        "structure_ok": false,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.5,
+        "question_count": 4,
+        "schema_ok": false,
+        "issues": [
+          "第1题 选项不足 2 个",
+          "第2题 缺少解析",
+          "第2题 选项不足 2 个",
+          "第2题 答案 ['A, B'] 超出选项范围（共1项）",
+          "第3题 缺少解析",
+          "第4题 缺少解析",
+          "第4题 简答题得分点不足 2 个",
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "单选题": 1,
+          "多选题": 1,
+          "判断题": 1,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 16.0,
+        "total_consistent": true,
+        "run": 1
+      },
+      {
+        "craft_type": "电工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 11.1,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 1.0,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 2
+      },
+      {
+        "craft_type": "电焊工",
+        "edu_level": "项目级",
+        "online": false,
+        "elapsed_s": 15.2,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 1.0,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 2
+      },
+      {
+        "craft_type": "架子工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 11.1,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.5,
+        "question_count": 10,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 1,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 61.0,
+        "total_consistent": true,
+        "run": 2
+      },
+      {
+        "craft_type": "高处作业工",
+        "edu_level": "项目级",
+        "online": false,
+        "elapsed_s": 17.2,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.5,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 2
+      },
+      {
+        "craft_type": "起重吊装工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 15.1,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 1.0,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 2
+      },
+      {
+        "craft_type": "隧道作业工",
+        "edu_level": "班组级",
+        "online": true,
+        "elapsed_s": 15.0,
+        "structure_ok": false,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.75,
+        "question_count": 4,
+        "schema_ok": false,
+        "issues": [
+          "第2题 缺少解析",
+          "第3题 缺少解析",
+          "第3题 判断题答案不规范：A",
+          "第4题 缺少解析",
+          "第4题 简答题得分点不足 2 个"
+        ],
+        "q_type_dist": {
+          "单选题": 1,
+          "多选题": 1,
+          "判断题": 1,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 35.0,
+        "total_consistent": true,
+        "run": 2
+      },
+      {
+        "craft_type": "人工挖孔桩工",
+        "edu_level": "班组级",
+        "online": false,
+        "elapsed_s": 14.0,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.5,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 2
+      },
+      {
+        "craft_type": "爆破工",
+        "edu_level": "项目级",
+        "online": false,
+        "elapsed_s": 14.8,
+        "structure_ok": true,
+        "must_contain_coverage": 1.0,
+        "fact_coverage": 0.75,
+        "question_count": 12,
+        "schema_ok": false,
+        "issues": [
+          "存在重复题干"
+        ],
+        "q_type_dist": {
+          "判断题": 3,
+          "单选题": 5,
+          "多选题": 3,
+          "简答题": 1
+        },
+        "dist_match": false,
+        "total_score": 73.0,
+        "total_consistent": true,
+        "run": 2
+      }
+    ]
+  },
+  "grading": {
+    "runs": 3,
+    "overall": {
+      "objective_accuracy": 1.0,
+      "essay_mae": 7.29,
+      "essay_rmse": 11.24,
+      "essay_bias": 2.0,
+      "essay_within_10pct": 0.4286,
+      "total_mae": 12.14,
+      "total_bias": 4.0,
+      "total_within_5pts": 0.3571,
+      "pearson_total": 0.5902,
+      "spearman_total": 0.6623,
+      "pearson_essay": 0.5069,
+      "spearman_essay": 0.6705,
+      "essay_llm_share": 1.0,
+      "llm_essay_mae": 7.29,
+      "llm_pearson_essay": 0.5069,
+      "llm_spearman_essay": 0.6705
+    },
+    "per_run": [
+      {
+        "objective_accuracy": 1.0,
+        "essay_mae": 7.29,
+        "essay_rmse": 11.24,
+        "essay_bias": 2.0,
+        "essay_within_10pct": 0.4286,
+        "total_mae": 12.14,
+        "total_bias": 4.0,
+        "total_within_5pts": 0.3571,
+        "pearson_total": 0.5902,
+        "spearman_total": 0.6623,
+        "pearson_essay": 0.5069,
+        "spearman_essay": 0.6705,
+        "essay_llm_share": 1.0,
+        "llm_essay_mae": 7.29,
+        "llm_pearson_essay": 0.5069,
+        "llm_spearman_essay": 0.6705
+      },
+      {
+        "objective_accuracy": 1.0,
+        "essay_mae": 4.89,
+        "essay_rmse": 8.3,
+        "essay_bias": 1.39,
+        "essay_within_10pct": 0.5357,
+        "total_mae": 7.5,
+        "total_bias": 2.79,
+        "total_within_5pts": 0.6429,
+        "pearson_total": 0.8486,
+        "spearman_total": 0.8334,
+        "pearson_essay": 0.7491,
+        "spearman_essay": 0.8324,
+        "essay_llm_share": 0.9643,
+        "llm_essay_mae": 4.15,
+        "llm_pearson_essay": 0.8407,
+        "llm_spearman_essay": 0.8793
+      },
+      {
+        "objective_accuracy": 1.0,
+        "essay_mae": 5.64,
+        "essay_rmse": 10.02,
+        "essay_bias": 1.79,
+        "essay_within_10pct": 0.6071,
+        "total_mae": 9.57,
+        "total_bias": 3.57,
+        "total_within_5pts": 0.5714,
+        "pearson_total": 0.7917,
+        "spearman_total": 0.8306,
+        "pearson_essay": 0.6277,
+        "spearman_essay": 0.8487,
+        "essay_llm_share": 1.0,
+        "llm_essay_mae": 5.64,
+        "llm_pearson_essay": 0.6277,
+        "llm_spearman_essay": 0.8487
+      }
+    ],
+    "stability": {
+      "objective_accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "n": 3
+      },
+      "essay_mae": {
+        "mean": 5.94,
+        "std": 1.0025,
+        "min": 4.89,
+        "max": 7.29,
+        "n": 3
+      },
+      "essay_rmse": {
+        "mean": 9.8533,
+        "std": 1.206,
+        "min": 8.3,
+        "max": 11.24,
+        "n": 3
+      },
+      "essay_bias": {
+        "mean": 1.7267,
+        "std": 0.253,
+        "min": 1.39,
+        "max": 2.0,
+        "n": 3
+      },
+      "essay_within_10pct": {
+        "mean": 0.5238,
+        "std": 0.0734,
+        "min": 0.4286,
+        "max": 0.6071,
+        "n": 3
+      },
+      "total_mae": {
+        "mean": 9.7367,
+        "std": 1.8979,
+        "min": 7.5,
+        "max": 12.14,
+        "n": 3
+      },
+      "total_bias": {
+        "mean": 3.4533,
+        "std": 0.5008,
+        "min": 2.79,
+        "max": 4.0,
+        "n": 3
+      },
+      "total_within_5pts": {
+        "mean": 0.5238,
+        "std": 0.1214,
+        "min": 0.3571,
+        "max": 0.6429,
+        "n": 3
+      },
+      "pearson_total": {
+        "mean": 0.7435,
+        "std": 0.1109,
+        "min": 0.5902,
+        "max": 0.8486,
+        "n": 3
+      },
+      "spearman_total": {
+        "mean": 0.7754,
+        "std": 0.08,
+        "min": 0.6623,
+        "max": 0.8334,
+        "n": 3
+      },
+      "pearson_essay": {
+        "mean": 0.6279,
+        "std": 0.0989,
+        "min": 0.5069,
+        "max": 0.7491,
+        "n": 3
+      },
+      "spearman_essay": {
+        "mean": 0.7839,
+        "std": 0.0804,
+        "min": 0.6705,
+        "max": 0.8487,
+        "n": 3
+      },
+      "essay_llm_share": {
+        "mean": 0.9881,
+        "std": 0.0168,
+        "min": 0.9643,
+        "max": 1.0,
+        "n": 3
+      },
+      "llm_essay_mae": {
+        "mean": 5.6933,
+        "std": 1.2825,
+        "min": 4.15,
+        "max": 7.29,
+        "n": 3
+      },
+      "llm_pearson_essay": {
+        "mean": 0.6584,
+        "std": 0.138,
+        "min": 0.5069,
+        "max": 0.8407,
+        "n": 3
+      },
+      "llm_spearman_essay": {
+        "mean": 0.7995,
+        "std": 0.0921,
+        "min": 0.6705,
+        "max": 0.8793,
+        "n": 3
+      }
+    },
+    "details": [
+      {
+        "cases": 14,
+        "essay_llm_share": 1.0,
+        "essay_llm_samples": 28,
+        "objective_accuracy": 1.0,
+        "objective_correct": 42,
+        "objective_total": 42,
+        "essay_mae": 7.29,
+        "essay_rmse": 11.24,
+        "essay_bias": 2.0,
+        "essay_within_10pct": 0.4286,
+        "total_mae": 12.14,
+        "total_bias": 4.0,
+        "total_within_5pts": 0.3571,
+        "pearson_total": 0.5902,
+        "spearman_total": 0.6623,
+        "pearson_essay": 0.5069,
+        "spearman_essay": 0.6705,
+        "llm_pearson_essay": 0.5069,
+        "llm_spearman_essay": 0.6705,
+        "llm_essay_mae": 7.29,
+        "per_case": [
+          {
+            "case": "C01 全部答对",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全正确，涵盖了所有十不吊的要点，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合得分点，涵盖了所有规定，没有违反任何安全行为。"
+              }
+            }
+          },
+          {
+            "case": "C02 客观题全错、简答题满分",
+            "human_total": 60.0,
+            "actual_total": 60.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：A"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答涵盖了所有十不吊的要点，没有遗漏或错误，因此得分为30分。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全符合得分点，每个要点都得到了正确的回答，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C03 客观题满分、简答题各命中一半",
+            "human_total": 70.0,
+            "actual_total": 50.0,
+            "total_diff": -20.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              8.0,
+              12.0
+            ],
+            "essay_got": [
+              7.0,
+              3.0
+            ],
+            "essay_human": [
+              15.0,
+              15.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 7.0,
+                "human": 15.0,
+                "comment": "考生只提到了三个要点，但遗漏了两个关键点，扣分。"
+              },
+              "5": {
+                "got": 3.0,
+                "human": 15.0,
+                "comment": "考生在回答中提到必须正确佩戴安全帽等劳动保护用品和必须正确佩戴安全带并拴挂牢靠，但没有明确说明是否必"
+              }
+            }
+          },
+          {
+            "case": "C04 客观题满分、简答题完全跑题",
+            "human_total": 40.0,
+            "actual_total": 58.0,
+            "total_diff": 18.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              3.0,
+              15.0
+            ],
+            "essay_got": [
+              3.0,
+              15.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 3.0,
+                "human": 0.0,
+                "comment": "考生回答了设备保养和液压油更换，但未正确回答“十不吊”的主要内容，属于设备维护而非安全培训。"
+              },
+              "5": {
+                "got": 15.0,
+                "human": 0.0,
+                "comment": "考生回答仅涵盖了主要措施，没有涵盖所有规定，导致得分较低。"
+              }
+            }
+          },
+          {
+            "case": "C05 简答比参考答案更详细",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合参考答案，涵盖了十不吊的所有主要内容，没有遗漏或错误。评分最高，得30分。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答了所有得分点，每个点都得到了正确的回答，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C06 简答只写关键词短语",
+            "human_total": 80.0,
+            "actual_total": 87.0,
+            "total_diff": 7.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              3.0,
+              10.0
+            ],
+            "essay_got": [
+              17.0,
+              30.0
+            ],
+            "essay_human": [
+              20.0,
+              20.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 17.0,
+                "human": 20.0,
+                "comment": "考生仅回答了超过负荷、重量不明、指挥信号和六级风力，每个得5分，共20分。剩下的三个内容点没说，每个"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 20.0,
+                "comment": "考生回答正确涵盖了所有得分点，每个得分点都得到了充分的描述，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C07 简答要点对但夹带错误说法",
+            "human_total": 90.0,
+            "actual_total": 84.0,
+            "total_diff": -6.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              10.0,
+              4.0
+            ],
+            "essay_got": [
+              15.0,
+              29.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 15.0,
+                "human": 25.0,
+                "comment": "考生仅提到了超过额定负荷、重量不明、捆绑不牢固、指挥信号不明和六级以上大风，但没有提到十级大风，导致"
+              },
+              "5": {
+                "got": 29.0,
+                "human": 25.0,
+                "comment": "考生仅正确描述了进入施工现场作业人员的基本行为，但没有提到安全技术交底，这属于理论知识掌握的范畴，因"
+              }
+            }
+          },
+          {
+            "case": "C08 判断题用口语化“正确”作答",
+            "human_total": 100.0,
+            "actual_total": 94.0,
+            "total_diff": -6.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              6.0
+            ],
+            "essay_got": [
+              30.0,
+              24.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合参考答案，涵盖了所有十不吊主要内容，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 24.0,
+                "human": 30.0,
+                "comment": "考生回答了所有六个要点，但未明确说明是否正确使用安全带和安全帽，导致扣分。"
+              }
+            }
+          },
+          {
+            "case": "C09 多选题漏选一个正确项",
+            "human_total": 80.0,
+            "actual_total": 60.0,
+            "total_diff": -20.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              20.0,
+              0.0
+            ],
+            "essay_got": [
+              10.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 10.0,
+                "human": 30.0,
+                "comment": "考生准确回答了“十不吊”的主要内容，涵盖了所有得分点，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全符合评分标准，涵盖了所有规定，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C10 简答题留空",
+            "human_total": 40.0,
+            "actual_total": 67.0,
+            "total_diff": 27.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              27.0,
+              0.0
+            ],
+            "essay_got": [
+              27.0,
+              0.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 27.0,
+                "human": 0.0,
+                "comment": "考生仅输出了JSON，没有进行深入分析，没有详细阐述每个要点，可能扣分较多。"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "考生的作答格式错误，不完整，不满足评分要求。"
+              }
+            }
+          },
+          {
+            "case": "C11 简答题复述题干无实质要点",
+            "human_total": 40.0,
+            "actual_total": 92.0,
+            "total_diff": 52.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              24.0,
+              28.0
+            ],
+            "essay_got": [
+              24.0,
+              28.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 24.0,
+                "human": 0.0,
+                "comment": "考生的作答正确，但没有详细说明每个原因，可能扣分较多。"
+              },
+              "5": {
+                "got": 28.0,
+                "human": 0.0,
+                "comment": "考生回答了大部分得分点，但缺少一些细节，如安全教育培训、正确佩戴所有劳动保护用品，以及严禁抛扔物料等"
+              }
+            }
+          },
+          {
+            "case": "C12 客观题答案小写与乱序",
+            "human_total": 60.0,
+            "actual_total": 69.0,
+            "total_diff": 9.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              14.0,
+              5.0
+            ],
+            "essay_got": [
+              24.0,
+              5.0
+            ],
+            "essay_human": [
+              10.0,
+              10.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 24.0,
+                "human": 10.0,
+                "comment": "考生只给出了两个点，而正确答案有十个，遗漏了八个，扣分较多。"
+              },
+              "5": {
+                "got": 5.0,
+                "human": 10.0,
+                "comment": "考生回答了‘必须接受安全教育，必须戴安全帽’，但遗漏了‘安全技术交底’、‘正确佩戴安全帽’、‘衣着整"
+              }
+            }
+          },
+          {
+            "case": "C13 简答用同义表述",
+            "human_total": 90.0,
+            "actual_total": 85.0,
+            "total_diff": -5.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              5.0,
+              10.0
+            ],
+            "essay_got": [
+              30.0,
+              15.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 25.0,
+                "comment": "考生回答了所有得分点，每个得分点都得到了正确的回答，没有遗漏也没有重复。评分公正。"
+              },
+              "5": {
+                "got": 15.0,
+                "human": 25.0,
+                "comment": "考生的回答在细节上不够准确，如正确佩戴安全帽和安全带的描述不准确，以及对禁止行为的描述不全面，导致评"
+              }
+            }
+          },
+          {
+            "case": "C14 判断题答“否”",
+            "human_total": 90.0,
+            "actual_total": 90.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合参考答案，涵盖了所有十不吊的要点，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答正确涵盖了所有评分标准中的六个要点，每个要点都得到了正确的描述和规范，没有遗漏或违反任何规定"
+              }
+            }
+          }
+        ],
+        "run": 1
+      },
+      {
+        "cases": 14,
+        "essay_llm_share": 0.9643,
+        "essay_llm_samples": 27,
+        "objective_accuracy": 1.0,
+        "objective_correct": 42,
+        "objective_total": 42,
+        "essay_mae": 4.89,
+        "essay_rmse": 8.3,
+        "essay_bias": 1.39,
+        "essay_within_10pct": 0.5357,
+        "total_mae": 7.5,
+        "total_bias": 2.79,
+        "total_within_5pts": 0.6429,
+        "pearson_total": 0.8486,
+        "spearman_total": 0.8334,
+        "pearson_essay": 0.7491,
+        "spearman_essay": 0.8324,
+        "llm_pearson_essay": 0.8407,
+        "llm_spearman_essay": 0.8793,
+        "llm_essay_mae": 4.15,
+        "per_case": [
+          {
+            "case": "C01 全部答对",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全正确，涵盖了十不吊的所有主要内容，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全涵盖了进入施工现场作业人员的基本行为规范，包括接受安全培训、正确佩戴安全帽、禁止赤膊赤脚"
+              }
+            }
+          },
+          {
+            "case": "C02 客观题全错、简答题满分",
+            "human_total": 60.0,
+            "actual_total": 60.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：A"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合参考答案，涵盖了所有十不吊的要点，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全正确，涵盖了所有评分点，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C03 客观题满分、简答题各命中一半",
+            "human_total": 70.0,
+            "actual_total": 70.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              9.0,
+              9.0
+            ],
+            "essay_got": [
+              6.0,
+              24.0
+            ],
+            "essay_human": [
+              15.0,
+              15.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 6.0,
+                "human": 15.0,
+                "comment": "考生只给出了三个点，而题目需要十个，因此扣分。扣分部分包括构件重量不明不吊和六级以上风力和雷暴雨不吊"
+              },
+              "5": {
+                "got": 24.0,
+                "human": 15.0,
+                "comment": "考生在回答中没有正确提及无可靠防护处正确佩戴安全带并拴挂牢靠，以及禁止赤膊赤脚穿拖鞋，这可能影响评分"
+              }
+            }
+          },
+          {
+            "case": "C04 客观题满分、简答题完全跑题",
+            "human_total": 40.0,
+            "actual_total": 54.0,
+            "total_diff": 14.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              12.0,
+              2.0
+            ],
+            "essay_got": [
+              12.0,
+              2.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 12.0,
+                "human": 0.0,
+                "comment": "考生只提到了六项内容，未提及其他安全措施，因此扣分。"
+              },
+              "5": {
+                "got": 2.0,
+                "human": 0.0,
+                "comment": "考生回答仅提到了几个方面，没有涵盖安全教育培训、劳动保护用品、服装整齐、安全带使用、抛扔物料和酒后作"
+              }
+            }
+          },
+          {
+            "case": "C05 简答比参考答案更详细",
+            "human_total": 100.0,
+            "actual_total": 95.0,
+            "total_diff": -5.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              5.0,
+              0.0
+            ],
+            "essay_got": [
+              25.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 25.0,
+                "human": 30.0,
+                "comment": "考生的作答涵盖了评分标准中的大部分内容，但缺少了'没有足够照明或光线差不吊'和'在斜坡上或坑沿堤岸边"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答了所有得分点，每个点都正确，没有遗漏或错误。评分最高，得满分。"
+              }
+            }
+          },
+          {
+            "case": "C06 简答只写关键词短语",
+            "human_total": 80.0,
+            "actual_total": 95.0,
+            "total_diff": 15.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              10.0,
+              5.0
+            ],
+            "essay_got": [
+              30.0,
+              25.0
+            ],
+            "essay_human": [
+              20.0,
+              20.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 20.0,
+                "comment": "考生回答了所有正确的“十不吊”主要内容，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 25.0,
+                "human": 20.0,
+                "comment": "考生的作答涵盖了所有评分点，但没有深入解释每个行为的含义和重要性。评分标准要求更详细地说明每个行为的"
+              }
+            }
+          },
+          {
+            "case": "C07 简答要点对但夹带错误说法",
+            "human_total": 90.0,
+            "actual_total": 85.0,
+            "total_diff": -5.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              10.0,
+              5.0
+            ],
+            "essay_got": [
+              15.0,
+              30.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 15.0,
+                "human": 25.0,
+                "comment": "考生在作答中提到了十级大风时可以正常吊装，这超出了参考答案中的内容，导致得分较低。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 25.0,
+                "comment": "考生回答涵盖了所有得分点，包括接受安全培训、正确佩戴安全帽、整齐着装、系安全带、严禁酒后作业，没有遗"
+              }
+            }
+          },
+          {
+            "case": "C08 判断题用口语化“正确”作答",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生准确回答了所有六个要点，每个点都正确无误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全符合评分标准，涵盖了所有规定，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C09 多选题漏选一个正确项",
+            "human_total": 80.0,
+            "actual_total": 80.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生正确回答了起重吊装作业‘十不吊’主要内容，涵盖了所有六个要点，每个点都得到了满分，没有遗漏或错误"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全正确，涵盖了所有规定要点，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C10 简答题留空",
+            "human_total": 40.0,
+            "actual_total": 40.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              0.0,
+              0.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": ""
+              },
+              "5": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "简述扣分/给分理由"
+              }
+            }
+          },
+          {
+            "case": "C11 简答题复述题干无实质要点",
+            "human_total": 40.0,
+            "actual_total": 68.0,
+            "total_diff": 28.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              24.0,
+              4.0
+            ],
+            "essay_got": [
+              24.0,
+              4.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 24.0,
+                "human": 0.0,
+                "comment": "考生没有详细说明每个“十不吊”的具体内容，而参考答案详细列出了每个情况。"
+              },
+              "5": {
+                "got": 4.0,
+                "human": 0.0,
+                "comment": "考生回答正确，但未详细列出所有行为，如必须佩戴安全帽、正确使用安全带等，导致扣分。"
+              }
+            }
+          },
+          {
+            "case": "C12 客观题答案小写与乱序",
+            "human_total": 60.0,
+            "actual_total": 75.0,
+            "total_diff": 15.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              5.0,
+              10.0
+            ],
+            "essay_got": [
+              15.0,
+              20.0
+            ],
+            "essay_human": [
+              10.0,
+              10.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 15.0,
+                "human": 10.0,
+                "comment": "考生只提到了两个主要内容，遗漏了其他八个，导致评分较低。"
+              },
+              "5": {
+                "got": 20.0,
+                "human": 10.0,
+                "comment": "考生仅提到了安全教育培训和安全帽，但未提及其他三项，导致扣分。"
+              }
+            }
+          },
+          {
+            "case": "C13 简答用同义表述",
+            "human_total": 90.0,
+            "actual_total": 67.0,
+            "total_diff": -23.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              2.0,
+              25.0
+            ],
+            "essay_got": [
+              27.0,
+              0.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "offline_rule"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 27.0,
+                "human": 25.0,
+                "comment": "考生在描述不平稳不吊时使用了“不吊”这个词，但实际描述应为“不平稳不吊”，因此在“不平稳不吊”这一得"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 25.0,
+                "comment": "命中 0/6 个得分点。"
+              }
+            }
+          },
+          {
+            "case": "C14 判断题答“否”",
+            "human_total": 90.0,
+            "actual_total": 90.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合参考答案，涵盖了所有十不吊的要点，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答了所有评分点，包括接受培训、正确佩戴安全帽、整齐着装、安全带和绑带、抛扔物料和酒后作业，完全"
+              }
+            }
+          }
+        ],
+        "run": 2
+      },
+      {
+        "cases": 14,
+        "essay_llm_share": 1.0,
+        "essay_llm_samples": 28,
+        "objective_accuracy": 1.0,
+        "objective_correct": 42,
+        "objective_total": 42,
+        "essay_mae": 5.64,
+        "essay_rmse": 10.02,
+        "essay_bias": 1.79,
+        "essay_within_10pct": 0.6071,
+        "total_mae": 9.57,
+        "total_bias": 3.57,
+        "total_within_5pts": 0.5714,
+        "pearson_total": 0.7917,
+        "spearman_total": 0.8306,
+        "pearson_essay": 0.6277,
+        "spearman_essay": 0.8487,
+        "llm_pearson_essay": 0.6277,
+        "llm_spearman_essay": 0.8487,
+        "llm_essay_mae": 5.64,
+        "per_case": [
+          {
+            "case": "C01 全部答对",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全覆盖了十不吊的所有六个内容，没有遗漏任何得分点，因此得分为30分。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答涵盖了所有评分标准中的五个得分点，每个得分点都得到了满足，没有遗漏或错误的地方。因此，考生"
+              }
+            }
+          },
+          {
+            "case": "C02 客观题全错、简答题满分",
+            "human_total": 60.0,
+            "actual_total": 60.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：A"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全正确，涵盖了十不吊的所有主要内容，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全符合得分点要求，每个规定都得到了满足，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C03 客观题满分、简答题各命中一半",
+            "human_total": 70.0,
+            "actual_total": 65.0,
+            "total_diff": -5.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              10.0,
+              5.0
+            ],
+            "essay_got": [
+              5.0,
+              20.0
+            ],
+            "essay_human": [
+              15.0,
+              15.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 5.0,
+                "human": 15.0,
+                "comment": "考生只涵盖了十不吊的前三项，但遗漏了其他可能的危险因素，如人员站在吊具上、活动物件、高风大浪、雷暴雨"
+              },
+              "5": {
+                "got": 20.0,
+                "human": 15.0,
+                "comment": "考生仅提到了必须接受安全教育培训、正确佩戴安全帽等劳动保护用品，衣着整齐禁止赤膊赤脚穿拖鞋，但未提及"
+              }
+            }
+          },
+          {
+            "case": "C04 客观题满分、简答题完全跑题",
+            "human_total": 40.0,
+            "actual_total": 55.0,
+            "total_diff": 15.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              15.0
+            ],
+            "essay_got": [
+              0.0,
+              15.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "考生回答了设备维护的内容，与‘十不吊’无关，因此不相关。"
+              },
+              "5": {
+                "got": 15.0,
+                "human": 0.0,
+                "comment": "考生仅提到施工现场应保持场地整洁，材料分类堆放，做好文明施工和环境保护工作，未提及安全教育培训、正确"
+              }
+            }
+          },
+          {
+            "case": "C05 简答比参考答案更详细",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全涵盖了“十不吊”的主要内容，每个点都正确对应，没有遗漏或错误。评分标准明确列出所有需要"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答了所有得分点，每个点都得到了正确的回答，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C06 简答只写关键词短语",
+            "human_total": 80.0,
+            "actual_total": 83.0,
+            "total_diff": 3.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              2.0,
+              5.0
+            ],
+            "essay_got": [
+              18.0,
+              25.0
+            ],
+            "essay_human": [
+              20.0,
+              20.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 18.0,
+                "human": 20.0,
+                "comment": "考生仅给出了四个要点，而参考答案有六个要点，因此每个要点可能扣分，导致总分较低。"
+              },
+              "5": {
+                "got": 25.0,
+                "human": 20.0,
+                "comment": "考生只说了三个要点，没有提到系安全带，这可能是因为第四个是必须的，但考生没写出来，所以扣分。"
+              }
+            }
+          },
+          {
+            "case": "C07 简答要点对但夹带错误说法",
+            "human_total": 90.0,
+            "actual_total": 70.0,
+            "total_diff": -20.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              20.0
+            ],
+            "essay_got": [
+              25.0,
+              5.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 25.0,
+                "human": 25.0,
+                "comment": "考生正确回答了五个要点，但错误地将十级大风时可以吊装的情况归类为十不吊，导致扣分。"
+              },
+              "5": {
+                "got": 5.0,
+                "human": 25.0,
+                "comment": "考生回答了安全教育培训、正确佩戴安全帽、衣着整齐禁止赤膊赤脚穿拖鞋、2米以上无可靠防护必须系安全带并"
+              }
+            }
+          },
+          {
+            "case": "C08 判断题用口语化“正确”作答",
+            "human_total": 100.0,
+            "actual_total": 100.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合参考答案，每个扣分点都正确，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答了所有六个要点，每个要点都正确无误，没有违反任何规定。因此，考生得满分。"
+              }
+            }
+          },
+          {
+            "case": "C09 多选题漏选一个正确项",
+            "human_total": 80.0,
+            "actual_total": 80.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：ABD"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全符合标准，每个扣分点都得到了正确的回答，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答完全符合得分点，涵盖了所有规定，没有遗漏或错误。"
+              }
+            }
+          },
+          {
+            "case": "C10 简答题留空",
+            "human_total": 40.0,
+            "actual_total": 65.0,
+            "total_diff": 25.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              25.0,
+              0.0
+            ],
+            "essay_got": [
+              25.0,
+              0.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 25.0,
+                "human": 0.0,
+                "comment": "考生只提到了六条，遗漏了其他四条，导致扣分。"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "内容缺失"
+              }
+            }
+          },
+          {
+            "case": "C11 简答题复述题干无实质要点",
+            "human_total": 40.0,
+            "actual_total": 64.0,
+            "total_diff": 24.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              24.0,
+              0.0
+            ],
+            "essay_got": [
+              24.0,
+              0.0
+            ],
+            "essay_human": [
+              0.0,
+              0.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 24.0,
+                "human": 0.0,
+                "comment": "考生仅提到了六个情况，遗漏了超过额定负荷、构件重量不明、六级以上风力和雷暴雨以及构件上站人或活动物件"
+              },
+              "5": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "考生未提及必须正确佩戴安全帽，且未明确指出必须在2米以上使用安全带。其他行为也存在不足。"
+              }
+            }
+          },
+          {
+            "case": "C12 客观题答案小写与乱序",
+            "human_total": 60.0,
+            "actual_total": 85.0,
+            "total_diff": 25.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              10.0,
+              15.0
+            ],
+            "essay_got": [
+              20.0,
+              25.0
+            ],
+            "essay_human": [
+              10.0,
+              10.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 20.0,
+                "human": 10.0,
+                "comment": "考生只回答了两个要点，遗漏了其他八个，导致扣分。"
+              },
+              "5": {
+                "got": 25.0,
+                "human": 10.0,
+                "comment": "考生仅提到了必须接受安全教育和必须戴安全帽，没有提到必须正确佩戴安全带并拴挂牢靠，以及必须禁止从高处"
+              }
+            }
+          },
+          {
+            "case": "C13 简答用同义表述",
+            "human_total": 90.0,
+            "actual_total": 73.0,
+            "total_diff": -17.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              22.0,
+              5.0
+            ],
+            "essay_got": [
+              3.0,
+              30.0
+            ],
+            "essay_human": [
+              25.0,
+              25.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 3.0,
+                "human": 25.0,
+                "comment": "考生仅提到了五个内容点，但没有提到“六级以上风力和雷暴雨不吊”这一内容，导致回答不完整。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 25.0,
+                "comment": "考生回答全面且准确，涵盖了安全培训、安全帽、安全带、服装要求和禁止行为，符合评分标准。"
+              }
+            }
+          },
+          {
+            "case": "C14 判断题答“否”",
+            "human_total": 90.0,
+            "actual_total": 90.0,
+            "total_diff": 0.0,
+            "objective_correct": 3,
+            "objective_total": 3,
+            "essay_diff": [
+              0.0,
+              0.0
+            ],
+            "essay_got": [
+              30.0,
+              30.0
+            ],
+            "essay_human": [
+              30.0,
+              30.0
+            ],
+            "essay_scorers": {
+              "4": "llm",
+              "5": "llm"
+            },
+            "per_question": {
+              "1": {
+                "got": 10.0,
+                "human": 10.0,
+                "comment": "回答正确"
+              },
+              "2": {
+                "got": 0.0,
+                "human": 0.0,
+                "comment": "回答错误，正确答案：对"
+              },
+              "3": {
+                "got": 20.0,
+                "human": 20.0,
+                "comment": "回答正确"
+              },
+              "4": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生的作答完全正确，涵盖了参考答案中的所有要点，没有遗漏或错误。"
+              },
+              "5": {
+                "got": 30.0,
+                "human": 30.0,
+                "comment": "考生回答了所有六个要点，每个要点都得到了满分，因此得分为30分。"
+              }
+            }
+          }
+        ],
+        "run": 3
+      }
+    ]
+  },
+  "strict_overall_score": 0.6492,
+  "strict_overall_components": [
+    {
+      "metric": "hit@k",
+      "value": 0.925,
+      "weight": 0.3
+    },
+    {
+      "metric": "mrr",
+      "value": 0.7758,
+      "weight": 0.1
+    },
+    {
+      "metric": "schema_rate",
+      "value": 0.0,
+      "weight": 0.15
+    },
+    {
+      "metric": "objective_accuracy",
+      "value": 1.0,
+      "weight": 0.1
+    },
+    {
+      "metric": "essay_within_10pct",
+      "value": 0.4286,
+      "weight": 0.15
+    }
+  ],
+  "strict_overall_formula": "hit@k*0.30 + mrr*0.10 + schema_rate*0.15 + fact_ok_rate*0.20 + objective_accuracy*0.10 + essay_within_10pct*0.15（缺失子项按剩余权重归一化，fact_ok_rate 不可用时自动剔除）"
+}
