@@ -1,0 +1,80 @@
+services:
+  # ===== Milvus 依赖：etcd（元数据）=====
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.18
+    container_name: milvus-etcd
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - etcd_data:/etcd
+    command: etcd -advertise-client-urls=http://127.0.0.1:2379 -listen-client-urls=http://0.0.0.0:2379 --data-dir /etcd
+    restart: unless-stopped
+
+  # ===== Milvus 单机版（common.storageType=local 本地存储，免 minio 依赖）=====
+  standalone:
+    image: milvusdb/milvus:v2.5.4
+    container_name: milvus-standalone
+    command: ["milvus", "run", "standalone"]
+    environment:
+      ETCD_ENDPOINTS: etcd:2379
+      # 单机本地存储模式：无需 MinIO 对象存储（仅适用于 standalone 部署）
+      COMMON_STORAGETYPE: local
+    volumes:
+      - milvus_data:/var/lib/milvus
+    ports:
+      - "19530:19530"   # Milvus 客户端端口
+      - "19091:9091"    # 健康检查端口（宿主 19091 → 容器 9091，避开 Docker Desktop 占用）
+    depends_on:
+      - etcd
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 15s
+      start_period: 60s
+      timeout: 10s
+      retries: 6
+    restart: unless-stopped
+
+  # ===== 应用 =====
+  safety-training-agent:
+    build: .
+    image: safety-training-agent:v2
+    container_name: safety-training-agent
+    ports:
+      - "8000:8000"
+    volumes:
+      # 原始知识库数据（只读）
+      - D:/2-Agent/datas:/data:ro
+      # 复用宿主机已缓存的 BGE / reranker 模型，避免容器内重复下载
+      - C:/Users/A/.cache/huggingface:/root/.cache/huggingface:ro
+      # FAISS 备选向量库、转换缓存与日志
+      - ./faiss_db:/app/faiss_db
+      - ./data_cache:/app/data_cache
+      - ./logs:/app/logs
+    environment:
+      LLM_BACKEND: ollama
+      # Ollama 运行在宿主机（Windows/macOS Docker Desktop 通过 host.docker.internal 访问）
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      OLLAMA_MODEL: deepseek-r1:7b
+      # 向量库：Milvus（默认，IVF_SQ8 量化索引）
+      VECTOR_DB: milvus
+      MILVUS_URI: http://standalone:19530
+      MILVUS_INDEX_TYPE: IVF_SQ8
+      DATA_DIR: /data
+      # 容器内嵌入/重排默认 CPU（镜像内置 CPU 版 torch）；
+      # 本地 conda 环境跑 GPU 请设 DEVICE=cuda（需 CUDA 版 torch）。
+      # 若需容器 GPU 透传：Dockerfile 安装 cu126 torch，并在下方加：
+      #   deploy: { resources: { reservations: { devices: [ { driver: nvidia, count: all, capabilities: [gpu] } ] } } }
+      DEVICE: cpu
+      USE_RERANKER: "true"
+      USE_BM25: "true"
+    depends_on:
+      standalone:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  etcd_data:
+  milvus_data:

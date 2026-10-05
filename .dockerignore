@@ -1,0 +1,14 @@
+# 构建镜像时排除的内容（减小上下文、避免泄露密钥）
+.env
+.git
+.gitignore
+__pycache__/
+*.pyc
+chroma_db/
+faiss_db/
+data_cache/
+logs/
+eval/eval_report.json
+*.zip
+.vscode/
+.idea/
